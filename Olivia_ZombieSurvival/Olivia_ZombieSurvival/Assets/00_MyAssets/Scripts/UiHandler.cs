@@ -5,17 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class UiHandler : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void loadOpeningScene()  
     {
+
+        SceneManager.LoadScene(1);  
 
     }
 
-    // Update is called once per frame
-    void Update()
+    public void QuitGame()
     {
+
+        Application.Quit(); 
 
     }
 
-   
 }

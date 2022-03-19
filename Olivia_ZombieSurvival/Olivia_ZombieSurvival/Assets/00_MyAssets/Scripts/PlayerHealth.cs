@@ -26,6 +26,6 @@ public class PlayerHealth : MonoBehaviour
         playerDeadCanvas.enabled = true;
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None; //don't confine to any window
-        Cursor.visible = true; //show the sursor
+        Cursor.visible = true; //show the cursor
     }
 }

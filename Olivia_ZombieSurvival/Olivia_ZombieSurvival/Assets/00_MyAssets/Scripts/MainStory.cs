@@ -7,7 +7,7 @@ public class MainStory : MonoBehaviour
 {
     void OnEnable()
     {
-        //Onnly specifying the sceneName or sceneBuildIndex will load the Scene with the single mode
+        //Only specifying the sceneName or sceneBuildIndex will load the Scene with the single mode
         SceneManager.LoadScene("Menu", LoadSceneMode.Single);
     }
 }

@@ -102,28 +102,28 @@ MonoBehaviour:
     overrideState: 0
     value: 1
   temperature:
-    overrideState: 1
-    value: -5
+    overrideState: 0
+    value: 0
   tint:
-    overrideState: 1
+    overrideState: 0
     value: 0
   colorFilter:
     overrideState: 1
-    value: {r: 0.9026132, g: 1, b: 0.759434, a: 1}
+    value: {r: 0.9622642, g: 0.9107442, b: 0.8033998, a: 1}
   hueShift:
-    overrideState: 1
+    overrideState: 0
     value: 0
   saturation:
-    overrideState: 1
-    value: 0
+    overrideState: 0
+    value: -10
   brightness:
     overrideState: 0
     value: 0
   postExposure:
-    overrideState: 1
+    overrideState: 0
     value: 0
   contrast:
-    overrideState: 1
+    overrideState: 0
     value: 0
   mixerRedOutRedIn:
     overrideState: 0
@@ -1379,13 +1379,13 @@ MonoBehaviour:
     value: 1
   focusDistance:
     overrideState: 1
-    value: 10
+    value: 1.7
   aperture:
     overrideState: 1
-    value: 1.9
+    value: 10.3
   focalLength:
     overrideState: 1
-    value: 50
+    value: 47
   kernelSize:
     overrideState: 1
     value: 1
@@ -1470,24 +1470,24 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 9
+    value: 7
   threshold:
     overrideState: 1
-    value: 0.2
+    value: 0.3
   softKnee:
     overrideState: 0
-    value: 0.5
+    value: 0.4
   clamp:
     overrideState: 0
-    value: 65472
+    value: 65551.67
   diffusion:
     overrideState: 1
-    value: 4.7
+    value: 3.9
   anamorphicRatio:
-    overrideState: 0
-    value: 0
-  color:
     overrideState: 1
+    value: -0.25
+  color:
+    overrideState: 0
     value: {r: 1, g: 1, b: 1, a: 1}
   fastMode:
     overrideState: 0
@@ -1549,7 +1549,7 @@ MonoBehaviour:
     value: {x: 0.5, y: 0.5}
   intensity:
     overrideState: 1
-    value: 0.48
+    value: 0.419
   smoothness:
     overrideState: 1
     value: 0.726
@@ -1587,7 +1587,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 0.54
+    value: 0.28
   color:
     overrideState: 1
     value: {r: 0, g: 0, b: 0, a: 1}

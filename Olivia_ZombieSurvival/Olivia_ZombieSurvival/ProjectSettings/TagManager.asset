@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Shootable
+  - Footsteps/WOOD
+  - Footsteps/GROUND
+  - Footsteps/CONCRETE
+  - Footsteps/WATER
   layers:
   - Default
   - TransparentFX
@@ -13,7 +17,7 @@ TagManager:
   - Water
   - UI
   - Post
-  - 
+  - Interactable
   - Lighting
   - Ground
   - Postprocessing

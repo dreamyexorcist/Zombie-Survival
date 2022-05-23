@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class UiHandler : MonoBehaviour
 {
+    
     public void loadOpeningScene()  
     {
         SceneManager.LoadScene(1);  

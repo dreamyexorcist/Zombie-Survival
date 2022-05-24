@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class DamageTest : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
-            FirstPersonController.OnTakeDamage(15);
-           
+            FirstPersonController.OnTakeDamage(0.05f);
+
     }
 }

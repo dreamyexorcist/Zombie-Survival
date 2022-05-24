@@ -12,7 +12,7 @@ Material:
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
+  m_DoubleSidedGI: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
@@ -93,7 +93,7 @@ Material:
     - _DetailInt: 0.4
     - _DetailTile: 10
     - _DetailTiling: 10
-    - _Emis: 0.05
+    - _Emis: 0.1
     - _Fresnel: 1
     - _FresnelScale: 0.75
     - _GerstnerIntensity: 1
@@ -118,8 +118,8 @@ Material:
     - _SpecContrast: 2
     - _SpecIntensity: 2.3
     - _Transparency: 0.95
-    - _WaveFreq: 20
-    - _WaveHeight: 0.25
+    - _WaveFreq: 10
+    - _WaveHeight: 0.1
     - _WavePower: 1.4029856
     - _WaveScale: 0.058
     - _fogEnd: 400
@@ -132,7 +132,7 @@ Material:
     - _BaseColor: {r: 0.54, g: 0.95, b: 0.99, a: 0.5}
     - _BumpDirection: {r: 1, g: 1, b: -1, a: 1}
     - _BumpTiling: {r: 1, g: 1, b: -2, a: 3}
-    - _Color: {r: 0.7861892, g: 0.791, b: 0.62569845, a: 1}
+    - _Color: {r: 0.57155573, g: 0.6012555, b: 0.7169812, a: 1}
     - _ColorTint: {r: 0.74509805, g: 0.7023594, b: 0.5727028, a: 1}
     - _DistortParams: {r: 1, g: 1, b: 2, a: 1.15}
     - _Emission: {r: 0, g: 0, b: 0, a: 0}

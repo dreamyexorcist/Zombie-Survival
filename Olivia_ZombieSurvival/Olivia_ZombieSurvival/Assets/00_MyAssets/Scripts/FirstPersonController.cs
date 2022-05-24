@@ -26,6 +26,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private bool canZoom = true;
     [SerializeField] private bool canInteract = true;
     [SerializeField] private bool useFootsteps = true;
+    [SerializeField] private bool useStamina = true;
 
     [Header("Controls")]
     [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift; //'keycode' gives dropdown menu in inspector
@@ -56,6 +57,16 @@ public class FirstPersonController : MonoBehaviour
     public static Action<float> OnTakeDamage;
     public static Action<float> OnDamage;
     public static Action<float> OnHeal;
+
+    [Header("Stamina Parameters")]
+    [SerializeField] private float maxStamina = 100;
+    [SerializeField] private float staminaUseMultiplier = 5; //to calculate how much stamina is lost while sprinting.
+    [SerializeField] private float timeBeforeStaminaRegenStarts = 5;
+    [SerializeField] private float staminaValueIncrement = 2;
+    [SerializeField] private float staminaTimeIncrement = 0.1f;
+    private float currentStamina;
+    private Coroutine regeneratingStamina;
+    public static Action<float> OnStaminaChange;
 
     [Header("Jump Parameters")]
     [SerializeField] private float jumpForce = 8.0f;
@@ -153,6 +164,7 @@ public class FirstPersonController : MonoBehaviour
         defaultYPos = playerCamera.transform.localPosition.y; //gets cameras defult y position.
         defaultFOV = playerCamera.fieldOfView; //default view set in inspector
         currentHealth = maxHealth;
+        currentStamina = maxStamina;
         Cursor.lockState = CursorLockMode.Locked; //locks cursor within game window.
         Cursor.visible = false; //hides cursor
     }
@@ -184,6 +196,9 @@ public class FirstPersonController : MonoBehaviour
             if (canInteract)
                 HandleInteractionCheck();
                 HandleInteractionInput();
+
+            if (useStamina)
+                HandleStamina();
 
             ApplyFinalMovement();
         }
@@ -254,6 +269,33 @@ public class FirstPersonController : MonoBehaviour
         }
     }
 
+    private void HandleStamina()
+    {
+        if (IsSprinting && currentInput != Vector2.zero) //only use stamina if moving, not if sprint key is pressed but not moving.
+        {
+            if (regeneratingStamina != null) //stop regen coroutine if player starts sprinting. 
+            {
+                StopCoroutine(regeneratingStamina);
+                regeneratingStamina = null; //any regeneration stops. keeps current stamina value but regeneration will not add to value if player sprints.
+            }
+
+            currentStamina -= staminaUseMultiplier * Time.deltaTime; //use (5) units of stamina every second.
+
+            if (currentStamina < 0) //if  stamina less then 0 set to 0
+                currentStamina = 0;
+
+            OnStaminaChange?.Invoke(currentStamina); //UI callback
+
+            if (currentStamina <= 0) //if stamina less or equal to 0 player can't sprint.
+                canSprint = false;
+        }
+
+        if (!IsSprinting && currentStamina < maxStamina && regeneratingStamina == null) //if not sprinting, and stamina less then max stamina, and stamina is not already regenerating
+        {
+            regeneratingStamina = StartCoroutine(RegenerateStamina()); //then regen stamina 
+        }
+    }
+
     private void HandleZoom()
     {
         if (Input.GetKeyDown(zoomKey)) //if mouse 1 button is pressed
@@ -307,7 +349,6 @@ public class FirstPersonController : MonoBehaviour
         {
             currentInteractable.OnInteract(); //whatever interact object is, it is always inheriting from Interactable OnInteract.
         }
-
     }
 
     private void HandleFootsteps()
@@ -347,7 +388,7 @@ public class FirstPersonController : MonoBehaviour
 
     private void ApplyDamage(float dmg)
     {
-        print("YUPO");
+        print("DAMAGE");
         currentHealth -= dmg;
         OnDamage?.Invoke(currentHealth); //only invoke damage if anything is listening for OnDamage, if nothing is (= null) then do nothing.
                                        
@@ -361,7 +402,7 @@ public class FirstPersonController : MonoBehaviour
 
     private void KillPlayer()
     {
-        currentHealth = 0; //health will not get lowr then 0
+        currentHealth = 0; //health will not get lower then 0
 
         if (regeneratingHealth != null)
             StopCoroutine(regeneratingHealth);
@@ -446,5 +487,28 @@ public class FirstPersonController : MonoBehaviour
         }
 
         regeneratingHealth = null;
+    }
+
+    private IEnumerator RegenerateStamina()
+    {
+        yield return new WaitForSeconds(timeBeforeStaminaRegenStarts); 
+        WaitForSeconds timeToWait = new WaitForSeconds(staminaTimeIncrement); 
+
+        while (currentStamina < maxStamina)
+        {
+            if (currentStamina > 0) //can sprint if stamina is greater then 0 even if canSprint is currenty false.
+                canSprint = true;
+
+            currentStamina += staminaValueIncrement;
+
+            if (currentStamina > maxStamina) //stamina will not go above default stamina value.
+                currentStamina = maxStamina;
+
+            OnStaminaChange?.Invoke(currentStamina); //UI callback
+
+            yield return timeToWait;
+        }
+
+        regeneratingStamina = null;
     }
 }

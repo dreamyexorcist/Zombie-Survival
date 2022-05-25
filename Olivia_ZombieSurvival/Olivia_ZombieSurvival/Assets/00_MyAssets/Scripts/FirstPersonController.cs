@@ -147,6 +147,8 @@ public class FirstPersonController : MonoBehaviour
 
     private float rotationX = 0; //angle that is clamped with upper and lower look limit
 
+    public static FirstPersonController instance;
+
     private void OnEnable() //reserved method (delegate)
     {
         OnTakeDamage += ApplyDamage; //if method is enabled, subscribe to apply damage method.
@@ -159,6 +161,8 @@ public class FirstPersonController : MonoBehaviour
 
     void Awake() //cache default component values.
     {
+        instance = this; //singleton?
+
         playerCamera = GetComponentInChildren<Camera>(); //child object of fps controller. (could be serialized and dragged into component instead)
         characterController = GetComponent<CharacterController>(); //is attached to parent object, component grabs character controller.
         defaultYPos = playerCamera.transform.localPosition.y; //gets cameras defult y position.

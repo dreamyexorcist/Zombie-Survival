@@ -44,9 +44,9 @@ public class Door : Interactable
     {
         while (isOpen)
         {
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(3);
 
-            if (Vector3.Distance(transform.position, FirstPersonController.instance.transform.position) > 5)
+            if (Vector3.Distance(transform.position, FirstPersonController.instance.transform.position) > 3)
             {
                 isOpen = false;
                 anim.SetFloat("dot", 0);

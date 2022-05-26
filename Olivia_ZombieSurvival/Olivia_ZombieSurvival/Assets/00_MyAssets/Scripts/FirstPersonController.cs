@@ -27,6 +27,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private bool canInteract = true;
     [SerializeField] private bool useFootsteps = true;
     [SerializeField] private bool useStamina = true;
+    [SerializeField] Canvas playerDeadCanvas;
 
     [Header("Controls")]
     [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift; //'keycode' gives dropdown menu in inspector
@@ -102,7 +103,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float crouchStepMultiplier = 1.5f;
     [SerializeField] private float sprintStepMultiplier = 0.6f;
     [SerializeField] private AudioSource footstepAudioSource = default;
-    [SerializeField] private AudioClip[] woodClips = default;
+    //[SerializeField] private AudioClip[] woodClips = default;
     [SerializeField] private AudioClip[] groundClips = default;
     [SerializeField] private AudioClip[] waterClips = default;
     [SerializeField] private AudioClip[] concreteClips = default;
@@ -113,6 +114,11 @@ public class FirstPersonController : MonoBehaviour
 
     //SLIDING PARAMTETERS
     private Vector3 hitPointNormal; //angle of the floor
+
+    private void Start()
+    {
+        playerDeadCanvas.enabled = false;
+    }
 
     private bool IsSliding
     {
@@ -369,7 +375,7 @@ public class FirstPersonController : MonoBehaviour
                 switch (hit.collider.tag)
                 {
                     case "Footsteps/WOOD":
-                        footstepAudioSource.PlayOneShot(woodClips[UnityEngine.Random.Range(0, groundClips.Length - 1)]); //and if it is wood play random wood sound.
+                        footstepAudioSource.PlayOneShot(groundClips[UnityEngine.Random.Range(0, groundClips.Length - 1)]); //and if it is wood play random wood sound.
                         break;
                     case "Footsteps/GROUND":
                         footstepAudioSource.PlayOneShot(groundClips[UnityEngine.Random.Range(0, groundClips.Length - 1)]);
@@ -410,6 +416,12 @@ public class FirstPersonController : MonoBehaviour
 
         if (regeneratingHealth != null)
             StopCoroutine(regeneratingHealth);
+
+        playerDeadCanvas.enabled = true;
+
+        Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.None; //don't confine to any window
+        Cursor.visible = true; //show the cursor
 
         print("DEAD");
     }

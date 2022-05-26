@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4749466960117474330}
   - component: {fileID: 4656130982164878965}
   m_Layer: 0
-  m_Name: Regular Enemy
+  m_Name: Regular_Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,7 +70,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 1
-  m_WalkableMask: 61
+  m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
 --- !u!114 &7944345976148618977
 MonoBehaviour:
@@ -98,7 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aiTarget: {fileID: 0}
-  range: 10
+  range: 19.89
+  attackDamage: 20
   shouldAiAttack: 0
 --- !u!95 &4656130982164878965
 Animator:

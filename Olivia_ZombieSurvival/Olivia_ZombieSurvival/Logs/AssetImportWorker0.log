@@ -15,11 +15,11 @@ E:/Game Dev/Github/Olivia_ZombieSurvival/Olivia_ZombieSurvival/Olivia_ZombieSurv
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-50745
+53180
 Successfully changed project path to: E:/Game Dev/Github/Olivia_ZombieSurvival/Olivia_ZombieSurvival/Olivia_ZombieSurvival
 E:/Game Dev/Github/Olivia_ZombieSurvival/Olivia_ZombieSurvival/Olivia_ZombieSurvival
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 85.46 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 51.99 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.2.6f1 (8a2143876886)
 [Subsystems] Discovering subsystems at path E:/Unity/2020.2.6f1/Editor/Data/Resources/UnitySubsystems
@@ -39,99 +39,188 @@ Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,susp
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: E:/Unity/2020.2.6f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.000859 seconds.
+Registered in 0.000863 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 68.02 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 51.60 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.774 seconds
+- Completed reload, in  0.681 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.000850 seconds.
+Registered in 0.000556 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.54 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.57 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.678 seconds
+- Completed reload, in  0.655 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.27 seconds
-Refreshing native plugins compatible for Editor in 0.52 ms, found 0 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1704 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 213.8 MB.
-System memory in use after: 213.3 MB.
+Unloading 1707 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 214.7 MB.
+System memory in use after: 214.2 MB.
 
-Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2193.
-Total: 3.118800 ms (FindLiveObjects: 0.359800 ms CreateObjectMapping: 0.052500 ms MarkObjects: 2.118500 ms  DeleteObjects: 0.586800 ms)
-
-========================================================================
-Received Import Request.
-  path: Assets/00_MyAssets/Sprites
-  artifactKey: Guid(1f9f5201625b2ad4884e207569728015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/00_MyAssets/Sprites using Guid(1f9f5201625b2ad4884e207569728015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '434ba27f5acc97bd7852da6c034b567f') in 0.931942 seconds
-  Import took 1.081779 seconds .
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2199.
+Total: 2.684900 ms (FindLiveObjects: 0.188500 ms CreateObjectMapping: 0.038800 ms MarkObjects: 1.921700 ms  DeleteObjects: 0.534800 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 1073.561503 seconds.
-  path: Assets/00_MyAssets/Sprites/sprite-life.PNG
-  artifactKey: Guid(ad2c2ca991035ea42affe49d8431adaf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/00_MyAssets/Sprites/sprite-life.PNG using Guid(ad2c2ca991035ea42affe49d8431adaf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '232cc42a2a04fd78822da6e2309cb408') in 0.121475 seconds
-  Import took 0.147241 seconds .
+  path: Assets/ImportedAssets/Flooded_Grounds/Prefabs/Nature/Trees/TreeCreator_Crinkly_B.prefab
+  artifactKey: Guid(1a7d988da17e44741aabfb0c94a2035b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ImportedAssets/Flooded_Grounds/Prefabs/Nature/Trees/TreeCreator_Crinkly_B.prefab using Guid(1a7d988da17e44741aabfb0c94a2035b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '10181c7b971074a95b057f372c6e2155') in 0.200128 seconds
+  Import took 0.203052 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000200 seconds.
-  path: Assets/00_MyAssets/Sprites/sprite-run.PNG
-  artifactKey: Guid(32c727995fa250a4989b2450d1d73496) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/00_MyAssets/Sprites/sprite-run.PNG using Guid(32c727995fa250a4989b2450d1d73496) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e80285d08d42a6da1131d5e9c18c4607') in 0.015333 seconds
-  Import took 0.035808 seconds .
+  Time since last request: 2.676270 seconds.
+  path: Assets/ImportedAssets/Flooded_Grounds/Prefabs/Nature/Trees/TreeCreator_Crinkly_B.prefab
+  artifactKey: Guid(1a7d988da17e44741aabfb0c94a2035b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ImportedAssets/Flooded_Grounds/Prefabs/Nature/Trees/TreeCreator_Crinkly_B.prefab using Guid(1a7d988da17e44741aabfb0c94a2035b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec60c114c576ff616747ba76be997fd6') in 0.097358 seconds
+  Import took 0.119411 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 20.378842 seconds.
-  path: Assets/00_MyAssets/Sprites/sprite-life.PNG
-  artifactKey: Guid(ad2c2ca991035ea42affe49d8431adaf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/00_MyAssets/Sprites/sprite-life.PNG using Guid(ad2c2ca991035ea42affe49d8431adaf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6452e20944aa486060b9e4320dbeeb06') in 0.087665 seconds
-  Import took 0.171611 seconds .
+  Time since last request: 11.662258 seconds.
+  path: Assets/ImportedAssets/Flooded_Grounds/Prefabs/Nature/Trees/TreeCreator_Crinkly_B.prefab
+  artifactKey: Guid(1a7d988da17e44741aabfb0c94a2035b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ImportedAssets/Flooded_Grounds/Prefabs/Nature/Trees/TreeCreator_Crinkly_B.prefab using Guid(1a7d988da17e44741aabfb0c94a2035b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'caec3f9c0ab4c37f0a140b9fec4d52f2') in 0.079841 seconds
+  Import took 0.082779 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000172 seconds.
-  path: Assets/00_MyAssets/Sprites/sprite-run.PNG
-  artifactKey: Guid(32c727995fa250a4989b2450d1d73496) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/00_MyAssets/Sprites/sprite-run.PNG using Guid(32c727995fa250a4989b2450d1d73496) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fbade6f01d6fabf155f0bf2a096a5776') in 0.087943 seconds
-  Import took 0.122070 seconds .
+  Time since last request: 35.797971 seconds.
+  path: Assets/ImportedAssets/Flooded_Grounds/Prefabs/Nature/Trees/TreeCreator_Crinkly_B.prefab
+  artifactKey: Guid(1a7d988da17e44741aabfb0c94a2035b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ImportedAssets/Flooded_Grounds/Prefabs/Nature/Trees/TreeCreator_Crinkly_B.prefab using Guid(1a7d988da17e44741aabfb0c94a2035b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ad6350f3a47a8955c0b8fe0737daaedc') in 0.114198 seconds
+  Import took 0.117350 seconds .
 
 ========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.000611 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.69 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.633 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.53 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1564 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 206.3 MB.
-System memory in use after: 205.8 MB.
+Received Import Request.
+  Time since last request: 110.599796 seconds.
+  path: Assets/ImportedAssets/Flooded_Grounds/Prefabs/Nature/Trees/TreeCreator_Crinkly_B.prefab
+  artifactKey: Guid(1a7d988da17e44741aabfb0c94a2035b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ImportedAssets/Flooded_Grounds/Prefabs/Nature/Trees/TreeCreator_Crinkly_B.prefab using Guid(1a7d988da17e44741aabfb0c94a2035b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '181cc4696739bb37890991aebb0e1cc2') in 0.104457 seconds
+  Import took 0.107448 seconds .
 
-Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 2203.
-Total: 2.125600 ms (FindLiveObjects: 0.189300 ms CreateObjectMapping: 0.042500 ms MarkObjects: 1.312500 ms  DeleteObjects: 0.580500 ms)
+========================================================================
+Received Import Request.
+  Time since last request: 140.002029 seconds.
+  path: Assets/ImportedAssets/Flooded_Grounds/Prefabs/Nature/Trees/TreeCreator_Tall_C.prefab
+  artifactKey: Guid(1833ba93709e80944b9f2627881f3f4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ImportedAssets/Flooded_Grounds/Prefabs/Nature/Trees/TreeCreator_Tall_C.prefab using Guid(1833ba93709e80944b9f2627881f3f4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '88458ad02d9edb3dedd8faee8070264d') in 0.114558 seconds
+  Import took 0.117780 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.054086 seconds.
+  path: Assets/ImportedAssets/Flooded_Grounds/Prefabs/Nature/Trees/TreeCreator_Tall_C.prefab
+  artifactKey: Guid(1833ba93709e80944b9f2627881f3f4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ImportedAssets/Flooded_Grounds/Prefabs/Nature/Trees/TreeCreator_Tall_C.prefab using Guid(1833ba93709e80944b9f2627881f3f4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8c0a944e2fe892e77a61c691b17ae83d') in 0.024292 seconds
+  Import took 0.039370 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.419254 seconds.
+  path: Assets/ImportedAssets/Flooded_Grounds/Prefabs/Nature/Trees/TreeCreator_Tall_C.prefab
+  artifactKey: Guid(1833ba93709e80944b9f2627881f3f4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ImportedAssets/Flooded_Grounds/Prefabs/Nature/Trees/TreeCreator_Tall_C.prefab using Guid(1833ba93709e80944b9f2627881f3f4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b865af2ae179a0912ed4580097c2877c') in 0.036638 seconds
+  Import took 0.039672 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 126.016375 seconds.
+  path: Assets/ImportedAssets/Flooded_Grounds/Prefabs/Nature/Trees/TreeCreator_Tall_A.prefab
+  artifactKey: Guid(76221aed845c98e4482cc2856cc7257d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ImportedAssets/Flooded_Grounds/Prefabs/Nature/Trees/TreeCreator_Tall_A.prefab using Guid(76221aed845c98e4482cc2856cc7257d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9697da007c0f97732a5ea304257fb7ee') in 0.031318 seconds
+  Import took 0.034421 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.860687 seconds.
+  path: Assets/ImportedAssets/Flooded_Grounds/Prefabs/Nature/Trees/TreeCreator_Tall_A.prefab
+  artifactKey: Guid(76221aed845c98e4482cc2856cc7257d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ImportedAssets/Flooded_Grounds/Prefabs/Nature/Trees/TreeCreator_Tall_A.prefab using Guid(76221aed845c98e4482cc2856cc7257d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1856aa05793bf633c0d158e9596644df') in 0.025034 seconds
+  Import took 0.028078 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 83.401613 seconds.
+  path: Assets/ImportedAssets/Flooded_Grounds/Prefabs/Nature/Trees/TreeCreator_Tall_B.prefab
+  artifactKey: Guid(bf68be3621a129c48b56c6ffde6f3f7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ImportedAssets/Flooded_Grounds/Prefabs/Nature/Trees/TreeCreator_Tall_B.prefab using Guid(bf68be3621a129c48b56c6ffde6f3f7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '90d769dc4ce5e0ce7ebe0bca63203a55') in 0.036729 seconds
+  Import took 0.039730 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.831691 seconds.
+  path: Assets/ImportedAssets/Flooded_Grounds/Prefabs/Nature/Trees/TreeCreator_Tall_B.prefab
+  artifactKey: Guid(bf68be3621a129c48b56c6ffde6f3f7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ImportedAssets/Flooded_Grounds/Prefabs/Nature/Trees/TreeCreator_Tall_B.prefab using Guid(bf68be3621a129c48b56c6ffde6f3f7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7efd1e7d9db141db07807ba5caf98872') in 0.083588 seconds
+  Import took 0.086465 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 292.519803 seconds.
+  path: Assets/00_MyAssets/Prefabs/TreeCreator_Crinkly_B (1).prefab
+  artifactKey: Guid(e4e8dc5e7dde1144cb6171ef46b38849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/00_MyAssets/Prefabs/TreeCreator_Crinkly_B (1).prefab using Guid(e4e8dc5e7dde1144cb6171ef46b38849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b6d8f85a3bddbe9ddca382c66adcf1ee') in 0.014912 seconds
+  Import took 0.017789 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.047021 seconds.
+  path: Assets/00_MyAssets/Prefabs/TreeCreator_Crinkly_B (1).prefab
+  artifactKey: Guid(e4e8dc5e7dde1144cb6171ef46b38849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/00_MyAssets/Prefabs/TreeCreator_Crinkly_B (1).prefab using Guid(e4e8dc5e7dde1144cb6171ef46b38849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b6d8f85a3bddbe9ddca382c66adcf1ee') in 0.009356 seconds
+  Import took 0.012296 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 15.989992 seconds.
+  path: Assets/00_MyAssets/Prefabs/TreeCreator_Crinkly_B (2).prefab
+  artifactKey: Guid(e4e8dc5e7dde1144cb6171ef46b38849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/00_MyAssets/Prefabs/TreeCreator_Crinkly_B (2).prefab using Guid(e4e8dc5e7dde1144cb6171ef46b38849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9b76cfed3dfaf5fa324011eb38966dcf') in 0.012352 seconds
+  Import took 0.015387 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.012565 seconds.
+  path: Assets/00_MyAssets/Prefabs/TreeCreator_Crinkly_B (2).prefab
+  artifactKey: Guid(e4e8dc5e7dde1144cb6171ef46b38849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/00_MyAssets/Prefabs/TreeCreator_Crinkly_B (2).prefab using Guid(e4e8dc5e7dde1144cb6171ef46b38849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9b76cfed3dfaf5fa324011eb38966dcf') in 0.009017 seconds
+  Import took 0.012050 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 14.868586 seconds.
+  path: Assets/00_MyAssets/Prefabs/TreeCreator_Crinkly_B (2).prefab
+  artifactKey: Guid(e4e8dc5e7dde1144cb6171ef46b38849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/00_MyAssets/Prefabs/TreeCreator_Crinkly_B (2).prefab using Guid(e4e8dc5e7dde1144cb6171ef46b38849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '374ee9b29826ca360596982f78748659') in 0.064530 seconds
+  Import took 0.067897 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 82.046643 seconds.
+  path: Assets/00_MyAssets/Prefabs/TreeCreator_Crinkly_B (2).prefab
+  artifactKey: Guid(e4e8dc5e7dde1144cb6171ef46b38849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/00_MyAssets/Prefabs/TreeCreator_Crinkly_B (2).prefab using Guid(e4e8dc5e7dde1144cb6171ef46b38849) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '25e0f1c2fd8e336ff7a1460dc5a60f6b') in 0.056903 seconds
+  Import took 0.060232 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 103.492713 seconds.
+  path: Assets/ImportedAssets/Flooded_Grounds/Prefabs/Nature/Trees/TreeCreator_Crinkly_B.prefab
+  artifactKey: Guid(1a7d988da17e44741aabfb0c94a2035b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ImportedAssets/Flooded_Grounds/Prefabs/Nature/Trees/TreeCreator_Crinkly_B.prefab using Guid(1a7d988da17e44741aabfb0c94a2035b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '75841c152e5deaf134ada06ea78e08c8') in 0.045008 seconds
+  Import took 0.047999 seconds .
 

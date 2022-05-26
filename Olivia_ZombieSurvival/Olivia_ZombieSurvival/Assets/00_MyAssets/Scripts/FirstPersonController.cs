@@ -399,11 +399,14 @@ public class FirstPersonController : MonoBehaviour
     private void ApplyDamage(float dmg)
     {
         print("DAMAGE");
+
         currentHealth -= dmg;
         OnDamage?.Invoke(currentHealth); //only invoke damage if anything is listening for OnDamage, if nothing is (= null) then do nothing.
-                                       
         if (currentHealth <= 0)
+        {
             KillPlayer();
+        }
+
         else if (regeneratingHealth != null)
             StopCoroutine(regeneratingHealth); //coroutine to restart timer whenever player takes damage.
 

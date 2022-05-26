@@ -14,29 +14,27 @@ public class Enemy : MonoBehaviour
 
     public bool shouldAiAttack = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         distanceToAiTarget = Vector3.Distance(aiTarget.position, transform.position);
 
-       if(shouldAiAttack == true)
+        if (shouldAiAttack == true)
         {
             EngagePlayer();
         }
-       else if (distanceToAiTarget <= range)
+        else if (distanceToAiTarget <= range)
         {
             shouldAiAttack = true;
         }
-               
+
     }
 
-       private void ChaseAiTarget()
+    private void ChaseAiTarget()
     {
         GetComponent<Animator>().SetBool("Attack", false);
         GetComponent<Animator>().SetTrigger("Move");
@@ -48,7 +46,6 @@ public class Enemy : MonoBehaviour
         GetComponent<Animator>().SetBool("Attack", true);
         Debug.Log("Minus health from player");
     }
-
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
@@ -70,6 +67,6 @@ public class Enemy : MonoBehaviour
     public void DamageThePlayer()
     {
         if (aiTarget == null) { return; }
-        aiTarget.GetComponent<PlayerHealth>().Damage(attackDamage);
+       // aiTarget.GetComponent<FirstPersonController>().dmg(attackDamage);
     }
 }

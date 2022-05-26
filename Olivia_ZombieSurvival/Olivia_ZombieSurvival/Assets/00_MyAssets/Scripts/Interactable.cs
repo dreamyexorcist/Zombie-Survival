@@ -13,5 +13,4 @@ public abstract class Interactable : MonoBehaviour //Abstract class to make it i
     public abstract void OnFocus();
     public abstract void OnLoseFocus();
 
-
 }

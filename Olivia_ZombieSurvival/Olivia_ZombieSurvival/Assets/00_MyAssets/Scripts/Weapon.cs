@@ -9,17 +9,11 @@ public class Weapon : MonoBehaviour
     [SerializeField] float weaponDamage = 50f;
     [SerializeField] GameObject weaponHitEffect;
 
-    [SerializeField] float zoomInDistance = 20f;
-    [SerializeField] float originalZoomDistance = 60f;
-    bool zoomedIn = false;
+    //[SerializeField] float zoomInDistance = 20f;
+    //[SerializeField] float originalZoomDistance = 60f;
+   // bool zoomedIn = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+   
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -27,22 +21,24 @@ public class Weapon : MonoBehaviour
             Fire();
         }
 
-        if (Input.GetMouseButtonDown(1)) //(GetMouseButton or Space)
+       /* if (Input.GetMouseButtonDown(1)) //(GetMouseButton or Space)
         {
             ToggleZoom();
-        }
+        }*/
     }
 
     private void Fire()
     {
-        RaycastHit objectHit; //Store all info about the object that is hit.
+        RaycastHit objectHit; //Store info about the object that is hit. 
+
         if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out objectHit, weaponRange))
         {
             CreateHitEffect(objectHit);
             Debug.Log(objectHit.transform.name);
             EnemyHealth enemyHealthScript = objectHit.transform.GetComponent<EnemyHealth>();
+
             if(enemyHealthScript == null) { return; }
-            enemyHealthScript.TakeDamage(weaponDamage);
+               enemyHealthScript.TakeDamage(weaponDamage);
         }
         else
         {
@@ -56,7 +52,7 @@ public class Weapon : MonoBehaviour
         Destroy(bulletHit, 2f);
     }
 
-    private void ToggleZoom()
+    /*private void ToggleZoom()
     {
         if(zoomedIn == false)
         {
@@ -68,5 +64,5 @@ public class Weapon : MonoBehaviour
             zoomedIn = false;
             playerCamera.fieldOfView = originalZoomDistance;
         }
-    }
+    }*/
 }

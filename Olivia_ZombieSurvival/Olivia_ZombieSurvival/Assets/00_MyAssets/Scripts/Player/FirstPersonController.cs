@@ -53,7 +53,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float timeBeforeRegenStarts = 3;
     [SerializeField] private float healthValueIncrement = 1;
     [SerializeField] private float healthTimeIncrement = 0.1f;
-    private float currentHealth;
+    public float currentHealth;
     private Coroutine regeneratingHealth; //coroutine to restart timer whenever player takes damage.
     public static Action<float> OnTakeDamage;
     public static Action<float> OnDamage;
@@ -167,7 +167,7 @@ public class FirstPersonController : MonoBehaviour
 
     void Awake() //cache default component values.
     {
-        instance = this; //singleton?
+        instance = this; //singleton = gloabally accessible class, excists in scene but only once
 
         playerCamera = GetComponentInChildren<Camera>(); //child object of fps controller. (could be serialized and dragged into component instead)
         characterController = GetComponent<CharacterController>(); //is attached to parent object, component grabs character controller.
@@ -396,7 +396,7 @@ public class FirstPersonController : MonoBehaviour
         }
     }
 
-    private void ApplyDamage(float dmg)
+    public void ApplyDamage(float dmg)
     {
         print("DAMAGE");
 

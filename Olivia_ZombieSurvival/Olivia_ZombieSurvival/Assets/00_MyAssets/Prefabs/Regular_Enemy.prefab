@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57c8827ab04a4fb478819dd5f5cc9565, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aiTarget: {fileID: 0}
+  aiTarget: {fileID: 740879024286953731, guid: db650ff8d23d1704c9c8afb9c4271557, type: 3}
   range: 19.89
   attackDamage: 20
   shouldAiAttack: 0

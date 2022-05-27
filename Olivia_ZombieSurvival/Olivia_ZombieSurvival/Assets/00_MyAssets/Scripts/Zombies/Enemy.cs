@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] Transform aiTarget;
     [SerializeField] float range;
-    [SerializeField] float attackDamage = 20f;
+    [SerializeField] float attackDamage = 80f;
     NavMeshAgent navMeshAgent;
 
     private float distanceToAiTarget = 1000000f;
@@ -67,6 +67,8 @@ public class Enemy : MonoBehaviour
     public void DamageThePlayer()
     {
         if (aiTarget == null) { return; }
-       // aiTarget.GetComponent<FirstPersonController>().dmg(attackDamage);
+        //aiTarget.GetComponent<FirstPersonController>().dmg(attackDamage);
+
+        print("DAMAGE");
     }
 }

@@ -69,6 +69,7 @@ public class Enemy : MonoBehaviour
         if (aiTarget == null) { return; }
         //aiTarget.GetComponent<FirstPersonController>().dmg(attackDamage);
 
+
         print("DAMAGE");
     }
 }

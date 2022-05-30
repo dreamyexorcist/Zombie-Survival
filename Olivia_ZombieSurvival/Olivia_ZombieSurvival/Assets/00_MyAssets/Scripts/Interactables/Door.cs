@@ -31,7 +31,7 @@ public class Door : Interactable
             anim.SetFloat("dot", dot);
             anim.SetBool("isOpen", isOpen); //animater swings the door
 
-            StartCoroutine(AutoClose());
+            //StartCoroutine(AutoClose());
         }
     }
 
@@ -40,7 +40,7 @@ public class Door : Interactable
         
     }
 
-    private IEnumerator AutoClose()
+    /*public IEnumerator AutoClose()
     {
         while (isOpen)
         {
@@ -54,7 +54,7 @@ public class Door : Interactable
             }
 
         }
-    }
+    }*/
 
   /*private void Animator_LockInteraction()
     {

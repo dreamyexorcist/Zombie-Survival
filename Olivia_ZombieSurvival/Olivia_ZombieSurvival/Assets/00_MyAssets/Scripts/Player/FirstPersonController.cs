@@ -375,20 +375,20 @@ public class FirstPersonController : MonoBehaviour
                 switch (hit.collider.tag)
                 {
                     case "Footsteps/WOOD":
-                        footstepAudioSource.PlayOneShot(groundClips[UnityEngine.Random.Range(0, groundClips.Length - 1)]); //and if it is wood play random wood sound.
+                        footstepAudioSource.PlayOneShot(groundClips[default]); //and if it is wood play random wood sound.
                         break;
                     case "Footsteps/GROUND":
-                        footstepAudioSource.PlayOneShot(groundClips[UnityEngine.Random.Range(0, groundClips.Length - 1)]);
+                        footstepAudioSource.PlayOneShot(groundClips[default]);
                         break;
                     case "Footsteps/WATER":
-                        footstepAudioSource.PlayOneShot(waterClips[UnityEngine.Random.Range(0, waterClips.Length - 1)]);
+                        footstepAudioSource.PlayOneShot(waterClips[default]);
                         break;
                     case "Footsteps/CONCRETE":
-                        footstepAudioSource.PlayOneShot(concreteClips[UnityEngine.Random.Range(0, concreteClips.Length - 1)]);
+                        footstepAudioSource.PlayOneShot(concreteClips[default]);
                         break;
-                    default:
+                    /*default:
                         footstepAudioSource.PlayOneShot(groundClips[UnityEngine.Random.Range(0, groundClips.Length - 1)]);
-                        break;
+                        break;*/
                 }
             }
 

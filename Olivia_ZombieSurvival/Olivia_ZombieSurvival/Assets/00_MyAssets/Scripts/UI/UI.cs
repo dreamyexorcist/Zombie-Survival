@@ -8,6 +8,7 @@ public class UI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI healthText = default;
     [SerializeField] private TextMeshProUGUI staminaText = default;
+    FirstPersonController firstPersonController;
 
     private void OnEnable()
     {
@@ -25,11 +26,14 @@ public class UI : MonoBehaviour
 
     private void Start()
     {
-        UpdateHealth(100); //default health
-        UpdateStamina(100);
+        firstPersonController = FindObjectOfType<FirstPersonController>();
+
+        UpdateHealth(firstPersonController.currentHealth); //default health
+        UpdateStamina(firstPersonController.currentStamina);
+
     }
 
-    private void UpdateHealth(float currentHealth) //value displayed on screen
+    public void UpdateHealth(float currentHealth) //value displayed on screen
     {
         healthText.text = currentHealth.ToString("00");
     }

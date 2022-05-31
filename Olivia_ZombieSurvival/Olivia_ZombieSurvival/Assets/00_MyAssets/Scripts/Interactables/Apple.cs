@@ -4,29 +4,33 @@ using UnityEngine;
 
 public class Apple : MonoBehaviour
 {
-    [SerializeField] private bool eatApple = true;
 
-    private int apple = 15;
-    private Object GameObject;
+    [SerializeField] private int apple = 15;
+    UI ui;
 
     private void Start()
     {
-            
+        ui = FindObjectOfType<UI>();
     }
 
     void OnTriggerEnter(Collider other)
     {
+        
         FirstPersonController fpsController = other.GetComponent<FirstPersonController>();
         if (fpsController != null)
         {
-            if (other.tag == "Player")
+            if (fpsController.currentHealth >= 0)
             {
-                if (fpsController.currentHealth >= 0)
-                    fpsController.currentHealth += (fpsController.currentHealth + apple);
+                fpsController.currentHealth += apple;
+
+                ui.UpdateHealth(fpsController.currentHealth);
+
+                // Debug.Log(fpsController.currentHealth);
+                Destroy(this.gameObject);
             }
 
-            Destroy(this.GameObject);
         }
-        
+
+
     }
 }

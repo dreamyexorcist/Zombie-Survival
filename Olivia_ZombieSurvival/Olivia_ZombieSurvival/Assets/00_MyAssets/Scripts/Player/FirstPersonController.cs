@@ -41,6 +41,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float sprintSpeed = 6.0f;
     [SerializeField] private float crouchSpeed = 1.5f;
     [SerializeField] private float slopeSpeed = 8f;
+    [SerializeField] float raycastLength = 5f;
 
     [Header("Look Parameters")]
     [SerializeField, Range(1, 10)] private float lookSpeedX = 2.0f; //, adds 2nd attribute, edtitable inside inspector
@@ -65,7 +66,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float timeBeforeStaminaRegenStarts = 5;
     [SerializeField] private float staminaValueIncrement = 2;
     [SerializeField] private float staminaTimeIncrement = 0.1f;
-    private float currentStamina;
+    public float currentStamina;
     private Coroutine regeneratingStamina;
     public static Action<float> OnStaminaChange;
 
@@ -124,10 +125,11 @@ public class FirstPersonController : MonoBehaviour
     {
         get //determine if player should be sliding
         {
-            Debug.DrawRay(transform.position, Vector3.down, Color.red);
+            
             //get data of the floor player is standing on via (downward) raycast, from player transform/centerpoint of object.
-            if (characterController.isGrounded && Physics.Raycast(transform.position, Vector3.down, out RaycastHit slopeHit, 22f))
+            if (characterController.isGrounded && Physics.Raycast(transform.position, Vector3.down, out RaycastHit slopeHit, raycastLength))
             {
+                Debug.DrawRay(transform.position, Vector3.down * raycastLength, Color.red);
                 hitPointNormal = slopeHit.normal; //gets angle value of floor player is currently standing on.
                 return Vector3.Angle(hitPointNormal, Vector3.up) > characterController.slopeLimit; //degree angle between direct vertical and current floor player is standing on.
                                                                                                    //check if value is greater then the set slope limit of character controlers (in inspector).

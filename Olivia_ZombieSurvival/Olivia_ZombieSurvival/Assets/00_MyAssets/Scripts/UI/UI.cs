@@ -10,6 +10,8 @@ public class UI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI staminaText = default;
     FirstPersonController firstPersonController;
 
+
+   
     private void OnEnable()
     {
         FirstPersonController.OnDamage += UpdateHealth; //update health UI when onDamage is called.
@@ -33,14 +35,18 @@ public class UI : MonoBehaviour
 
     }
 
+
+
     public void UpdateHealth(float currentHealth) //value displayed on screen
     {
         healthText.text = currentHealth.ToString("00");
+        Debug.Log(currentHealth);
     }
 
     private void UpdateStamina(float currentStamina)
     {
         staminaText.text = currentStamina.ToString("00");
+        Debug.Log(currentStamina);
     }
     public void loadOpeningScene()
     {

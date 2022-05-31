@@ -6,11 +6,11 @@ public class Apple : MonoBehaviour
 {
 
     [SerializeField] private int apple = 15;
-    UI ui;
+    //[SerializeField] UI myUI;
 
     private void Start()
     {
-        ui = FindObjectOfType<UI>();
+        
     }
 
     void OnTriggerEnter(Collider other)
@@ -23,7 +23,7 @@ public class Apple : MonoBehaviour
             {
                 fpsController.currentHealth += apple;
 
-                ui.UpdateHealth(fpsController.currentHealth);
+                //myUI.UpdateHealth(fpsController.currentHealth);
 
                 // Debug.Log(fpsController.currentHealth);
                 Destroy(this.gameObject);

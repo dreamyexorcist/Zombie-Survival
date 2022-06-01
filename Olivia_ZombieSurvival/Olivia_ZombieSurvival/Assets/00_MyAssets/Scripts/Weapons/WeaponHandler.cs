@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class WeaponHandler : MonoBehaviour
 {
+    //[SerializeField] Camera weaponCamera;
+    [SerializeField] int selectedWeapon = 0;
 
-    int selectedWeapon = 0;
+   /* private void Start()
+    {
+        weaponCamera = GetComponent<Camera>();
+    }*/
 
-    // Update is called once per frame
+
     void Update()
     {
         ActiveWeapon();
@@ -43,9 +48,6 @@ public class WeaponHandler : MonoBehaviour
         {
             selectedWeapon = 1;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            selectedWeapon = 2;
-        }
+        
     }
 }

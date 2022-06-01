@@ -45,8 +45,7 @@ public class UI : MonoBehaviour
 
     private void UpdateStamina(float currentStamina)
     {
-        staminaText.text = currentStamina.ToString("00");
-        Debug.Log(currentStamina);
+        staminaText.text = currentStamina.ToString("00");       
     }
     public void loadOpeningScene()
     {

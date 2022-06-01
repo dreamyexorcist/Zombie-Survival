@@ -9,22 +9,14 @@ public class Weapon : MonoBehaviour
     [SerializeField] float weaponDamage = 50f;
     [SerializeField] GameObject weaponHitEffect;
 
-    //[SerializeField] float zoomInDistance = 20f;
-    //[SerializeField] float originalZoomDistance = 60f;
-   // bool zoomedIn = false;
-
-   
+      
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {
             Fire();
         }
-
-       /* if (Input.GetMouseButtonDown(1)) //(GetMouseButton or Space)
-        {
-            ToggleZoom();
-        }*/
+    
     }
 
     private void Fire()
@@ -51,18 +43,5 @@ public class Weapon : MonoBehaviour
         GameObject bulletHit = Instantiate(weaponHitEffect, objectHit.point, Quaternion.identity);
         Destroy(bulletHit, 2f);
     }
-
-    /*private void ToggleZoom()
-    {
-        if(zoomedIn == false)
-        {
-            zoomedIn = true;
-            playerCamera.fieldOfView = zoomInDistance;
-        }
-        else
-        {
-            zoomedIn = false;
-            playerCamera.fieldOfView = originalZoomDistance;
-        }
-    }*/
+  
 }

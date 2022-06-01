@@ -4,23 +4,18 @@ using UnityEngine;
 
 public class PowerBox : MonoBehaviour
 {
-   public GameObject[] lights;
+    public GameObject[] lights;
 
     bool nearPowerBox = false;
     bool lightsOn = false;
+    private Light lightSwitch;
 
-    public AudioClip generator;
-    public AudioClip lightSound;
 
-    
-    private AudioSource audioSource;
+    //private AudioSource audioSource;
 
     private void Start()
     {
-       // lightSwitch = GetComponent<Light>();
-
-        
-        audioSource = GetComponent<AudioSource>();
+         lightSwitch = GetComponent<Light>();
 
     }
 
@@ -29,18 +24,14 @@ public class PowerBox : MonoBehaviour
         if (nearPowerBox && Input.GetKeyDown(KeyCode.E))
         {
             TurnOnLights();
-
-            //lightSwitch.enabled = !lightSwitch.enabled;
-            audioSource.clip = lightSound;
-            audioSource.Play();
-
+            
         }
-        else if(lightsOn)
+
+        if (nearPowerBox && Input.GetKeyDown(KeyCode.E))
         {
-            audioSource.clip = generator;
-            audioSource.Play();
+            TurnOffLight();
         }
-
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -68,11 +59,27 @@ public class PowerBox : MonoBehaviour
             if (lightComponentOnEachLight != null)
             {
                 lightComponentOnEachLight.enabled = true;
-               
+
             }
 
         }
-        
+
+    }
+
+    private void TurnOffLight()
+    {
+        lightsOn = false;
+        foreach (GameObject light in lights)
+        {
+            Light lightComponentOnEachLight = light.GetComponent<Light>();
+            if (lightComponentOnEachLight = null)
+            {
+                lightComponentOnEachLight.enabled = false;
+
+            }
+
+        }
+
     }
 
 }

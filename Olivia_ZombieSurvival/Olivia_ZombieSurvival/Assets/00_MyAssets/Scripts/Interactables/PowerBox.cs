@@ -10,28 +10,18 @@ public class PowerBox : MonoBehaviour
     bool lightsOn = false;
     private Light lightSwitch;
 
-
-    //private AudioSource audioSource;
-
     private void Start()
     {
          lightSwitch = GetComponent<Light>();
-
     }
 
     void Update()
     {
         if (nearPowerBox && Input.GetKeyDown(KeyCode.E))
         {
-            TurnOnLights();
-            
+            TurnOnLights();            
         }
-
-        if (nearPowerBox && Input.GetKeyDown(KeyCode.E))
-        {
-            TurnOffLight();
-        }
-        
+                
     }
 
     private void OnTriggerEnter(Collider other)
@@ -59,14 +49,11 @@ public class PowerBox : MonoBehaviour
             if (lightComponentOnEachLight != null)
             {
                 lightComponentOnEachLight.enabled = true;
-
             }
-
         }
-
     }
 
-    private void TurnOffLight()
+    /*private void TurnOffLight()
     {
         lightsOn = false;
         foreach (GameObject light in lights)
@@ -75,11 +62,8 @@ public class PowerBox : MonoBehaviour
             if (lightComponentOnEachLight = null)
             {
                 lightComponentOnEachLight.enabled = false;
-
             }
-
         }
-
-    }
+    }*/
 
 }

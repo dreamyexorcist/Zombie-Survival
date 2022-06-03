@@ -10,7 +10,7 @@ public class Instructions : MonoBehaviour
     void Start()
     {
         instructionsUI.SetActive(false);
-        instructionsUI.SetActive(false);
+       // instructionsUI.SetActive(false);
     }
 
     void OnTriggerEnter(Collider player)

@@ -54,11 +54,13 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float timeBeforeRegenStarts = 3;
     [SerializeField] private float healthValueIncrement = 1;
     [SerializeField] private float healthTimeIncrement = 0.1f;
+    [SerializeField] private float dmg = 5f; //D A M A G E
     public float currentHealth;
     private Coroutine regeneratingHealth; //coroutine to restart timer whenever player takes damage.
     public static Action<float> OnTakeDamage;
     public static Action<float> OnDamage;
     public static Action<float> OnHeal;
+
 
     [Header("Stamina Parameters")]
     [SerializeField] private float maxStamina = 100;

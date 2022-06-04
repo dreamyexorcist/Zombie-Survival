@@ -39,11 +39,10 @@ public class UI : MonoBehaviour
 
     public void UpdateHealth(float currentHealth) //value displayed on screen
     {
-        healthText.text = currentHealth.ToString("00");
-        Debug.Log(currentHealth);
+        healthText.text = currentHealth.ToString("00");        
     }
 
-    private void UpdateStamina(float currentStamina)
+    public void UpdateStamina(float currentStamina)
     {
         staminaText.text = currentStamina.ToString("00");       
     }

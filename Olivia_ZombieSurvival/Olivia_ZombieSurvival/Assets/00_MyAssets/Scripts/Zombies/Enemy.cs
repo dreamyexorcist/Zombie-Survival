@@ -43,8 +43,7 @@ public class Enemy : MonoBehaviour
 
     private void AttackAiTarget()
     {
-        GetComponent<Animator>().SetBool("Attack", true);
-        Debug.Log("Minus health from player");
+        GetComponent<Animator>().SetBool("Attack", true);        
     }
     private void OnDrawGizmosSelected()
     {
@@ -68,8 +67,6 @@ public class Enemy : MonoBehaviour
     {
         if (aiTarget == null) { return; }
         //aiTarget.GetComponent<FirstPersonController>().dmg(attackDamage);
-
-
-        print("DAMAGE");
+                
     }
 }

@@ -5,32 +5,28 @@ using UnityEngine;
 public class Apple : MonoBehaviour
 {
 
-    [SerializeField] private int addStamina = 15;
+    [SerializeField] private float addStamina = 1f;
+    [SerializeField] private FirstPersonController fpsController;
     private UI myUI;
 
     private void Start()
     {
-       myUI = FindObjectOfType<UI>();
+        fpsController = GameObject.Find("FirstPersonController").GetComponent<FirstPersonController>();
+        myUI = FindObjectOfType<UI>();
     }
 
     void OnTriggerEnter(Collider other)
     {
-        
-        FirstPersonController fpsController = other.GetComponent<FirstPersonController>();
+        myUI.GetComponent<UI>();
+
         if (fpsController != null)
         {
-            if (fpsController.currentStamina <= 0)
+            if (fpsController.currentStamina >= 0)
             {
                 fpsController.currentStamina += addStamina;
-
-                myUI.UpdateHealth(fpsController.currentStamina);
-
-                // Debug.Log(fpsController.currentHealth);
+                myUI.UpdateStamina(fpsController.maxStamina += addStamina);              
                 Destroy(this.gameObject);
             }
-
         }
-
-
     }
 }

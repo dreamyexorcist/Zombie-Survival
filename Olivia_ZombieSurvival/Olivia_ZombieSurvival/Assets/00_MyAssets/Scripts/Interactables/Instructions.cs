@@ -10,7 +10,7 @@ public class Instructions : MonoBehaviour
     void Start()
     {
         instructionsUI.SetActive(false);
-       // instructionsUI.SetActive(false);
+      //instructionsUI.SetActive(false);
     }
 
     void OnTriggerEnter(Collider player)
@@ -27,7 +27,7 @@ public class Instructions : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
         Destroy(instructionsUI);
-     // Destroy(gameObject);
+      //Destroy(gameObject);
     }
 
 }

@@ -27,6 +27,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private bool canInteract = true;
     [SerializeField] private bool useFootsteps = true;
     [SerializeField] private bool useStamina = true;
+    [SerializeField] private bool useProtection = false;
     [SerializeField] Canvas playerDeadCanvas;
 
     [Header("Controls")]
@@ -50,11 +51,14 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField, Range(1, 180)] private float lowerLookLimit = 80.0f;
 
     [Header("Health Parameters")]
-    [SerializeField] private float maxHealth = 100;
+    [SerializeField] public float maxHealth = 100;
     [SerializeField] private float timeBeforeRegenStarts = 3;
     [SerializeField] private float healthValueIncrement = 1;
     [SerializeField] private float healthTimeIncrement = 0.1f;
+    //[SerializeField] private float additionalHealth = 30;   
+
     [SerializeField] private float dmg = 5f; //D A M A G E
+
     public float currentHealth;
     private Coroutine regeneratingHealth; //coroutine to restart timer whenever player takes damage.
     public static Action<float> OnTakeDamage;
@@ -63,7 +67,7 @@ public class FirstPersonController : MonoBehaviour
 
 
     [Header("Stamina Parameters")]
-    [SerializeField] private float maxStamina = 100;
+    [SerializeField] public float maxStamina = 100;
     [SerializeField] private float staminaUseMultiplier = 5; //to calculate how much stamina is lost while sprinting.
     [SerializeField] private float timeBeforeStaminaRegenStarts = 5;
     [SerializeField] private float staminaValueIncrement = 2;
@@ -213,9 +217,9 @@ public class FirstPersonController : MonoBehaviour
 
             if (useStamina)
                 HandleStamina();
-
+                        
             ApplyFinalMovement();
-        }
+        }        
     }
 
     private void HandleMovementInput()
@@ -431,7 +435,7 @@ public class FirstPersonController : MonoBehaviour
         Cursor.visible = true; //show the cursor
 
         print("DEAD");
-    }
+    }      
 
     private void ApplyFinalMovement()
     {

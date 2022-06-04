@@ -26,7 +26,7 @@ public class Weapon : MonoBehaviour
         if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out objectHit, weaponRange))
         {
             CreateHitEffect(objectHit);
-            Debug.Log(objectHit.transform.name);
+           // Debug.Log(objectHit.transform.name);
             EnemyHealth enemyHealthScript = objectHit.transform.GetComponent<EnemyHealth>();
 
             if(enemyHealthScript == null) { return; }

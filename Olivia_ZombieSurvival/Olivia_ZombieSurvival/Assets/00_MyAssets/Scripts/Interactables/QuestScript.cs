@@ -71,6 +71,7 @@ public class QuestScript : MonoBehaviour
             quest2UI.SetActive(false);
             quest3UI.SetActive(true);
         }
+        Destroy(this.gameObject);
     }
 
     private void Quest3()

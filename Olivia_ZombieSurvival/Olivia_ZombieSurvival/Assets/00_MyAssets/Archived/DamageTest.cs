@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConstantDamage : MonoBehaviour
+public class DamageTest : MonoBehaviour
 {
     //[SerializeField] private float dmg = 5f;
     //public FirstPersonController currentHealth;    

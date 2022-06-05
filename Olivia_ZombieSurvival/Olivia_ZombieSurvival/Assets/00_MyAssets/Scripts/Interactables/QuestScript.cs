@@ -21,9 +21,10 @@ public class QuestScript : MonoBehaviour
 
     void Start()
     {
-       //quest2UI.SetActive(false);
-       //quest3UI.SetActive(false);
-       //quest4UI.SetActive(false);
+        //quest2UI.SetActive(false);
+        //quest3UI.SetActive(false);
+        //quest4UI.SetActive(false);
+        
     }
     void Update()
     {
@@ -63,6 +64,9 @@ public class QuestScript : MonoBehaviour
 
     private void Quest1()
     {
+        questTwo = unfinished;
+        questThree = unfinished;
+        questFour = unfinished;
         quest1UI.SetActive(false);
         questOne = finished;
         quest2UI.SetActive(true);

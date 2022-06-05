@@ -15,8 +15,8 @@ NavMeshProjectSettings:
     cost: 3
   - name: Ramp
     cost: 4
-  - name: 
-    cost: 1
+  - name: Special
+    cost: 5
   - name: 
     cost: 1
   - name: 

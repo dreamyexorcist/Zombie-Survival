@@ -5,23 +5,17 @@ using UnityEngine;
 public class PowerBox : MonoBehaviour
 {
     public GameObject[] lights;
-
     bool nearPowerBox = false;
-    bool lightsOn = false;
-    private Light lightSwitch;
 
-    private void Start()
-    {
-         lightSwitch = GetComponent<Light>();
-    }
 
     void Update()
     {
         if (nearPowerBox && Input.GetKeyDown(KeyCode.E))
         {
-            TurnOnLights();            
+            TurnOnLights();
+
         }
-                
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -42,7 +36,6 @@ public class PowerBox : MonoBehaviour
 
     private void TurnOnLights()
     {
-        lightsOn = true;
         foreach (GameObject light in lights)
         {
             Light lightComponentOnEachLight = light.GetComponent<Light>();
@@ -50,20 +43,9 @@ public class PowerBox : MonoBehaviour
             {
                 lightComponentOnEachLight.enabled = true;
             }
-        }
-    }
 
-    /*private void TurnOffLight()
-    {
-        lightsOn = false;
-        foreach (GameObject light in lights)
-        {
-            Light lightComponentOnEachLight = light.GetComponent<Light>();
-            if (lightComponentOnEachLight = null)
-            {
-                lightComponentOnEachLight.enabled = false;
-            }
         }
-    }*/
+
+    }
 
 }

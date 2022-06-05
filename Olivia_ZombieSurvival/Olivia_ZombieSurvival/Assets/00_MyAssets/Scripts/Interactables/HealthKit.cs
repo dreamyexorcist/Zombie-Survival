@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthKit : MonoBehaviour
 {
-    [SerializeField] private int addHealth = 55;
+    [SerializeField] private int addHealth = 1;
     private UI myUI;
 
     private void Start()
@@ -21,6 +21,8 @@ public class HealthKit : MonoBehaviour
             if (fpsController.currentHealth >= 0)
             {
                 fpsController.currentHealth += addHealth;
+
+                fpsController.currentHealth = fpsController.maxHealth;
 
                 myUI.UpdateHealth(fpsController.currentHealth);
 

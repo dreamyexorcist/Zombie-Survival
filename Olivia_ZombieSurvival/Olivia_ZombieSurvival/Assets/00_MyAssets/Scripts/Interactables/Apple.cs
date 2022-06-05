@@ -24,7 +24,7 @@ public class Apple : MonoBehaviour
             if (fpsController.currentStamina >= 0)
             {
                 fpsController.currentStamina += addStamina;
-                myUI.UpdateStamina(fpsController.maxStamina += addStamina);              
+                myUI.UpdateStamina(fpsController.currentStamina += addStamina);              
                 Destroy(this.gameObject);
             }
         }

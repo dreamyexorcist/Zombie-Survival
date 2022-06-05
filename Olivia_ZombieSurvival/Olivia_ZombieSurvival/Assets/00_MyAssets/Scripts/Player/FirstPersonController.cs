@@ -57,7 +57,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float healthTimeIncrement = 0.1f;
     //[SerializeField] private float additionalHealth = 30;   
 
-    [SerializeField] private float dmg = 5f; //D A M A G E
+    [SerializeField] public float dmg = 1f; //D A M A G E
 
     public float currentHealth;
     private Coroutine regeneratingHealth; //coroutine to restart timer whenever player takes damage.
@@ -69,7 +69,7 @@ public class FirstPersonController : MonoBehaviour
     [Header("Stamina Parameters")]
     [SerializeField] public float maxStamina = 100;
     [SerializeField] private float staminaUseMultiplier = 5; //to calculate how much stamina is lost while sprinting.
-    [SerializeField] private float timeBeforeStaminaRegenStarts = 5;
+    [SerializeField] private float timeBeforeStaminaRegenStarts = 2;
     [SerializeField] private float staminaValueIncrement = 2;
     [SerializeField] private float staminaTimeIncrement = 0.1f;
     public float currentStamina;
@@ -378,7 +378,7 @@ public class FirstPersonController : MonoBehaviour
 
         if (footstepTimer <= 0)
         {
-            if (Physics.Raycast(playerCamera.transform.position, Vector3.down, out RaycastHit hit, 3)) //if raycast down hits tagged object
+            if (Physics.Raycast(playerCamera.transform.position, Vector3.down, out RaycastHit hit, raycastLength)) //if raycast down hits tagged object
             {
                 switch (hit.collider.tag)
                 {

@@ -4,33 +4,26 @@ using UnityEngine;
 
 public class SwitchSound : MonoBehaviour
 {
+    public AudioSource generator;
+    public AudioSource electricity;
 
-    bool nearPowerBox = false;
-  //public BoxCollider power;
+    [SerializeField] private FirstPersonController fpsController;
 
-    private AudioSource[] audioClips;
-    private AudioSource generator;
-    private AudioSource electricity;
-
-
-
-    void Start()
+    private void Start()
     {
-      //power = GetComponent<BoxCollider>(); //need check for nearPowerBox collision
-        audioClips = GetComponents<AudioSource>();
-        
-        generator = audioClips[0];
-        electricity = audioClips[1];
+        fpsController = GameObject.Find("FirstPersonController").GetComponent<FirstPersonController>();
     }
-   
-    void Update()
-    {
-        
-        if (nearPowerBox && Input.GetKeyDown(KeyCode.E))
-        {
-            generator.Play();
-            electricity.Play();
 
-        }
+    void OnTriggerStay(Collider other)
+    {
+        fpsController.GetComponent<FirstPersonController>();
+
+        if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
+            if (fpsController != null)
+            {
+                generator.Play();
+                electricity.Play();
+            }
     }
 }
+

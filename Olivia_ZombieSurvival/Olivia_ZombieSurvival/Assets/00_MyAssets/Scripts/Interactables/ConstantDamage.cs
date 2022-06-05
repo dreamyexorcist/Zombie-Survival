@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageTest : MonoBehaviour
+public class ConstantDamage : MonoBehaviour
 {
-    //[SerializeField] private float dmg = 5f;
+    //[SerializeField] public float dmg = 5f;
     //public FirstPersonController currentHealth;    
 
     private void OnTriggerStay(Collider other)

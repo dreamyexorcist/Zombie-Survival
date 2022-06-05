@@ -19,11 +19,7 @@ public class UiHandler : MonoBehaviour
     public void loadSettingsScene()
     {
         SceneManager.LoadScene(4);
-    }
-   /* public void loadMenuScene()
-    {
-        SceneManager.LoadScene(1);
-    }*/
+    }  
 
     public void QuitGame()
     {

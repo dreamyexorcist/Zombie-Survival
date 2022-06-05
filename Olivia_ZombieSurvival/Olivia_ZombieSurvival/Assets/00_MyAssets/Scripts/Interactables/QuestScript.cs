@@ -7,41 +7,33 @@ public class QuestScript : MonoBehaviour
     [SerializeField] private GameObject quest1UI;
     [SerializeField] private GameObject quest2UI;
     [SerializeField] private GameObject quest3UI;
-    [SerializeField] private GameObject quest4UI;
+    [SerializeField] private GameObject quest4UI;   
 
     bool nearQuest = false;
+    private bool finished = true;
 
     [SerializeField] private bool questOne = false;
     [SerializeField] private bool questTwo = false;
     [SerializeField] private bool questThree = false;
-    [SerializeField] private bool questFour = false;
+    [SerializeField] private bool questFour = false;    
 
-    private bool finished = true;
-    private bool unfinished = false;
-
-    void Start()
-    {
-        //quest2UI.SetActive(false);
-        //quest3UI.SetActive(false);
-        //quest4UI.SetActive(false);
-        
-    }
     void Update()
     {
         if (nearQuest && Input.GetKeyDown(KeyCode.E))
         {
-            Quest1();            
+            Quest1();
         }
 
-        if (nearQuest && Input.GetKeyDown(KeyCode.E) && (questOne = finished) && (questTwo = unfinished))
-        {           
-            Quest2();            
+        if ((questOne = finished) && nearQuest && Input.GetKeyDown(KeyCode.E))
+        {
+            Quest2();
         }
-        if (nearQuest && Input.GetKeyDown(KeyCode.E) && (questTwo = finished) && (questThree = unfinished))
+
+        if ((questTwo = finished) && nearQuest && Input.GetKeyDown(KeyCode.E))
         {
             Quest3();
         }
-        if (nearQuest && Input.GetKeyDown(KeyCode.E) && (questThree = finished) && (questFour = unfinished))
+        if ((questThree = finished) && nearQuest && Input.GetKeyDown(KeyCode.E))
         {
             Quest4();
         }
@@ -64,65 +56,39 @@ public class QuestScript : MonoBehaviour
 
     private void Quest1()
     {
-        questTwo = unfinished;
-        questThree = unfinished;
-        questFour = unfinished;
-        quest1UI.SetActive(false);
-        questOne = finished;
-        quest2UI.SetActive(true);
-
-        /* if (gameObject.CompareTag("Quest1"))
-         {
-             questOne = finished;
-             quest2UI.SetActive(true);
-         }*/
-        /*if (questOne = finished)
+        if (gameObject.CompareTag("Quest1"))
         {
+            questOne = finished;
+            quest1UI.SetActive(false);
             quest2UI.SetActive(true);
-        }*/
+        }
     }
     private void Quest2()
     {
-        quest2UI.SetActive(false);
-        questTwo = finished;
-        quest3UI.SetActive(true);
-
-        /* if (gameObject.CompareTag("Quest2"))
-         {
-             questTwo = finished;
-             quest3UI.SetActive(true);
-         }*/
-        /*if (questTwo = finished)
+        if (gameObject.CompareTag("Quest2"))
         {
+            questTwo = finished;
+            quest2UI.SetActive(false);
             quest3UI.SetActive(true);
-        }*/
+        }
     }
-        
+
     private void Quest3()
     {
-        quest3UI.SetActive(false);
-        questThree = finished;
-        quest4UI.SetActive(true);
-
-        /* if (gameObject.CompareTag("Quest3"))
-         {
-             questThree = finished;
-             quest4UI.SetActive(true);
-         }*/
-        /* if (questThree = finished)
-         {
-             quest4UI.SetActive(true);
-         }*/
+        if (gameObject.CompareTag("Quest3"))
+        {
+            questThree = finished;
+            quest3UI.SetActive(false);
+            quest4UI.SetActive(true);
+        }
     }
     private void Quest4()
     {
-        quest4UI.SetActive(false);
-        questFour = finished;
-
-        /*if (gameObject.CompareTag("Quest4"))
+        if (gameObject.CompareTag("Quest4"))
         {
-           questFour = finished;
-        }*/
+            questFour = finished;
+            quest4UI.SetActive(false);           
+        }
+        Destroy(this.gameObject);
     }
 }
-

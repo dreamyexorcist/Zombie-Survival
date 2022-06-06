@@ -26,9 +26,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private bool canZoom = true;
     [SerializeField] private bool canInteract = true;
     [SerializeField] private bool useFootsteps = true;
-    [SerializeField] private bool useStamina = true;
-    [SerializeField] private bool useProtection = false;
-    [SerializeField] Canvas playerDeadCanvas;
+    [SerializeField] private bool useStamina = true;  
 
     [Header("Controls")]
     [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift; //'keycode' gives dropdown menu in inspector
@@ -55,7 +53,9 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float timeBeforeRegenStarts = 3;
     [SerializeField] private float healthValueIncrement = 1;
     [SerializeField] private float healthTimeIncrement = 0.1f;
-    //[SerializeField] private float additionalHealth = 30;   
+     
+    [SerializeField] private Transform player;
+    [SerializeField] private Transform respawnPoint;
 
     [SerializeField] public float dmg = 1f; //D A M A G E
 
@@ -72,6 +72,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float timeBeforeStaminaRegenStarts = 2;
     [SerializeField] private float staminaValueIncrement = 2;
     [SerializeField] private float staminaTimeIncrement = 0.1f;
+
     public float currentStamina;
     private Coroutine regeneratingStamina;
     public static Action<float> OnStaminaChange;
@@ -120,12 +121,7 @@ public class FirstPersonController : MonoBehaviour
     private float GetCurrentOffset => isCrouching ? baseStepSpeed * crouchStepMultiplier : IsSprinting ? baseStepSpeed * sprintStepMultiplier : baseStepSpeed;
 
     //SLIDING PARAMTETERS
-    private Vector3 hitPointNormal; //angle of the floor
-
-    private void Start()
-    {
-        playerDeadCanvas.enabled = false;
-    }
+    private Vector3 hitPointNormal; //angle of the floor   
 
     private bool IsSliding
     {
@@ -426,15 +422,14 @@ public class FirstPersonController : MonoBehaviour
         currentHealth = 0; //health will not get lower then 0
 
         if (regeneratingHealth != null)
+        {
+            player.transform.position = respawnPoint.transform.position;
             StopCoroutine(regeneratingHealth);
-
-        playerDeadCanvas.enabled = true;
-
-        Time.timeScale = 0;
-        Cursor.lockState = CursorLockMode.None; //don't confine to any window
-        Cursor.visible = true; //show the cursor
-
-        print("DEAD");
+            currentHealth = (maxHealth / 1.2f);           
+        }
+            
+        player.transform.position = respawnPoint.transform.position;
+        Physics.SyncTransforms();        
     }      
 
     private void ApplyFinalMovement()

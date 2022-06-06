@@ -70,7 +70,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] public float maxStamina = 100;
     [SerializeField] private float staminaUseMultiplier = 5; //to calculate how much stamina is lost while sprinting.
     [SerializeField] private float timeBeforeStaminaRegenStarts = 2;
-    [SerializeField] private float staminaValueIncrement = 2;
+    [SerializeField] private float staminaValueIncrement = 1;
     [SerializeField] private float staminaTimeIncrement = 0.1f;
 
     public float currentStamina;
@@ -402,8 +402,6 @@ public class FirstPersonController : MonoBehaviour
 
     public void ApplyDamage(float dmg)
     {
-        print("DAMAGE");
-
         currentHealth -= dmg;
         OnDamage?.Invoke(currentHealth); //only invoke damage if anything is listening for OnDamage, if nothing is (= null) then do nothing.
         if (currentHealth <= 0)

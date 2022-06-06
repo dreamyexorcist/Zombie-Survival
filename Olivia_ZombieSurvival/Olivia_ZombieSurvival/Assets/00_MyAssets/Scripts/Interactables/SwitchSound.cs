@@ -4,26 +4,32 @@ using UnityEngine;
 
 public class SwitchSound : MonoBehaviour
 {
-    public AudioSource generator;
-    public AudioSource electricity;
-
     [SerializeField] private FirstPersonController fpsController;
+
+    public AudioSource[] clips;
+    private bool keyInput = true;
 
     private void Start()
     {
         fpsController = GameObject.Find("FirstPersonController").GetComponent<FirstPersonController>();
+    }
+    void Update()
+    {
+        keyInput = Input.GetKeyDown(KeyCode.E);
+
     }
 
     void OnTriggerStay(Collider other)
     {
         fpsController.GetComponent<FirstPersonController>();
 
-        if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
+        if (other.CompareTag("Player") && keyInput)
             if (fpsController != null)
             {
-                generator.Play();
-                electricity.Play();
+                clips[0].Play();
+                clips[1].Play();
             }
     }
+
 }
 

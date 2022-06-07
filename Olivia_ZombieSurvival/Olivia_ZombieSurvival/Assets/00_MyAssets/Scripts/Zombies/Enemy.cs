@@ -66,7 +66,7 @@ public class Enemy : MonoBehaviour
     public void DamageThePlayer()
     {
         if (aiTarget == null) { return; }
-        //aiTarget.GetComponent<FirstPersonController>().dmg(attackDamage);
+        aiTarget.GetComponent<FirstPersonController>().ApplyDamage(attackDamage);
                 
     }
 }

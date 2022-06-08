@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthKit : MonoBehaviour
 {
-    [SerializeField] private int addHealth = 1;
+    [SerializeField] private float addHealth = 0.1f;
     private UI myUI;
 
     private void Start()

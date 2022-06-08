@@ -7,26 +7,25 @@ public class Apple : MonoBehaviour
 
     [SerializeField] private float addStamina = 1f;
     [SerializeField] private FirstPersonController fpsController;
-    private UI myUI;
+    private UI staminaUI;
 
     private void Start()
     {
         fpsController = GameObject.Find("FirstPersonController").GetComponent<FirstPersonController>();
-        myUI = FindObjectOfType<UI>();
+        staminaUI = FindObjectOfType<UI>();
     }
 
     void OnTriggerEnter(Collider other)
     {
-        myUI.GetComponent<UI>();
+        fpsController.GetComponent<FirstPersonController>();
+        staminaUI.GetComponent<UI>();
 
-        if (fpsController != null)
+        if ((fpsController != null) && (fpsController.currentStamina >= 0))
         {
-            if (fpsController.currentStamina >= 0)
-            {
-                fpsController.currentStamina += addStamina;
-                myUI.UpdateStamina(fpsController.currentStamina += addStamina);              
-                Destroy(this.gameObject);
-            }
-        }
+            fpsController.currentStamina += addStamina;
+            staminaUI.UpdateStamina(fpsController.currentStamina += addStamina);
+            Destroy(this.gameObject);
+
+        }        
     }
 }

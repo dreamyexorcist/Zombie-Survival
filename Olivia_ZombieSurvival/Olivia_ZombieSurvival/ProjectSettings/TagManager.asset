@@ -14,6 +14,7 @@ TagManager:
   - Quest2
   - Quest3
   - Quest4
+  - GameMusic
   layers:
   - Default
   - TransparentFX

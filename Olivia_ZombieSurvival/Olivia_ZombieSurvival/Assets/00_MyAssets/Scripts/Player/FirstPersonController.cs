@@ -57,7 +57,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private Transform respawnPoint;
 
-    [SerializeField] public float dmg = 1f; //D A M A G E
+    //[SerializeField] public float dmg = 1f; //D A M A G E
 
     public float currentHealth;
     private Coroutine regeneratingHealth; //coroutine to restart timer whenever player takes damage.

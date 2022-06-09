@@ -5,22 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class UiHandler : MonoBehaviour
 {
-    
-    public void loadOpeningScene()  
+    public void loadMenuScene()
     {
-        SceneManager.LoadScene(1);  
+        SceneManager.LoadScene(0);
     }
-
-    public void loadGameScene()
+    public void loadCinematicScene()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
     }
-
+    public void loadLevel1Scene()  
+    {
+        SceneManager.LoadScene(2);  
+    }
+    public void loadLevel2Scene()
+    {
+        SceneManager.LoadScene(3);
+    }
     public void loadSettingsScene()
     {
         SceneManager.LoadScene(4);
     }  
-
     public void QuitGame()
     {
         Application.Quit(); 

@@ -4,25 +4,26 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] private GameObject pickup;
+    //[SerializeField] private GameObject pickupScript;
     [SerializeField] Camera playerCamera;
     [SerializeField] float weaponRange = 10f;
     [SerializeField] float weaponDamage = 50f;
     [SerializeField] GameObject weaponHitEffect;
 
-    //public bool weaponCollected;
+    public bool weaponCollected;
 
     private void Start()
     {
-       
+        weaponCollected = FindObjectOfType<WeaponPickup>();
     }
 
 
     void Update()
     {
-        //GameObject pickup = weaponCollected.GetComponent<WeaponPickup>();
+       // weaponCollected = FindObjectOfType<WeaponPickup>();
 
-        if (Input.GetButtonDown("Fire1"))
+        if (weaponCollected && Input.GetButtonDown("Fire1"))
+     // if (Input.GetButtonDown("Fire1"))
         {
             Fire();
         }

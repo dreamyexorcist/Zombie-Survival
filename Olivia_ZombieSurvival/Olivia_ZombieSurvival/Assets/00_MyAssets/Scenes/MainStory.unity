@@ -13445,7 +13445,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1705399750}
         m_TargetAssemblyTypeName: UiHandler, Assembly-CSharp
-        m_MethodName: loadOpeningScene
+        m_MethodName: loadLevel1Scene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13852,7 +13852,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1705399750}
         m_TargetAssemblyTypeName: UiHandler, Assembly-CSharp
-        m_MethodName: loadOpeningScene
+        m_MethodName: loadMenuScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

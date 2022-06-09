@@ -9,8 +9,7 @@ public class Instructions : MonoBehaviour
   
     void Start()
     {
-        instructionsUI.SetActive(false);
-      //instructionsUI.SetActive(false);
+        instructionsUI.SetActive(false);      
     }
 
     void OnTriggerEnter(Collider player)
@@ -25,9 +24,8 @@ public class Instructions : MonoBehaviour
 
     IEnumerator WaitForSec()
     {
-        yield return new WaitForSeconds(5);
-        Destroy(instructionsUI);
-      //Destroy(gameObject);
+        yield return new WaitForSeconds(5);        
+        Destroy(gameObject);
     }
 
 }

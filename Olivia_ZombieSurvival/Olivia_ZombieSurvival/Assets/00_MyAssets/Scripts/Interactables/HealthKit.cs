@@ -14,8 +14,8 @@ public class HealthKit : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-
         FirstPersonController fpsController = other.GetComponent<FirstPersonController>();
+
         if (fpsController != null)
         {
             if (fpsController.currentHealth >= 0)

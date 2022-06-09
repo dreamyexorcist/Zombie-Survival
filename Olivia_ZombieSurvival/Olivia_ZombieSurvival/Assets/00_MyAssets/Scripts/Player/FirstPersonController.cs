@@ -17,7 +17,7 @@ public class FirstPersonController : MonoBehaviour
     //if pressed (true) and not mid crouch or mid stand, and if player is grounded, crouching is activated.
     private bool ShouldCrouch => Input.GetKeyDown(crouchKey) && !duringCrouchAnimation && characterController.isGrounded;
 
-    [Header("Functional Options")] //header organises inspector
+    [Header("Functional Options")]
     [SerializeField] private bool canSprint = true;
     [SerializeField] private bool canJump = true;
     [SerializeField] private bool canCrouch = true;
@@ -26,7 +26,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private bool canZoom = true;
     [SerializeField] private bool canInteract = true;
     [SerializeField] private bool useFootsteps = true;
-    [SerializeField] private bool useStamina = true;  
+    [SerializeField] private bool useStamina = true;
 
     [Header("Controls")]
     [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift; //'keycode' gives dropdown menu in inspector
@@ -40,7 +40,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float sprintSpeed = 6.0f;
     [SerializeField] private float crouchSpeed = 1.5f;
     [SerializeField] private float slopeSpeed = 8f;
-    [SerializeField] float raycastLength = 5f;
+    [SerializeField] float raycastLength = 2f;
 
     [Header("Look Parameters")]
     [SerializeField, Range(1, 10)] private float lookSpeedX = 2.0f; //, adds 2nd attribute, edtitable inside inspector
@@ -53,11 +53,9 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float timeBeforeRegenStarts = 3;
     [SerializeField] private float healthValueIncrement = 1;
     [SerializeField] private float healthTimeIncrement = 0.1f;
-     
+
     [SerializeField] private Transform player;
     [SerializeField] private Transform respawnPoint;
-
-    //[SerializeField] public float dmg = 1f; //D A M A G E
 
     public float currentHealth;
     private Coroutine regeneratingHealth; //coroutine to restart timer whenever player takes damage.
@@ -87,7 +85,9 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float timeToCrouch = 0.25f;
     [SerializeField] private Vector3 crouchingCenter = new Vector3(0, 0.5f, 0);
     [SerializeField] private Vector3 standingCenter = new Vector3(0, 0, 0);
+
     private bool isCrouching;
+
     private bool duringCrouchAnimation;
 
     [Header("Headbob Parameters")]
@@ -110,15 +110,17 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float baseStepSpeed = 0.5f;
     [SerializeField] private float crouchStepMultiplier = 1.5f;
     [SerializeField] private float sprintStepMultiplier = 0.6f;
+
     [SerializeField] private AudioSource footstepAudioSource = default;
-    //[SerializeField] private AudioClip[] woodClips = default;
     [SerializeField] private AudioClip[] groundClips = default;
     [SerializeField] private AudioClip[] waterClips = default;
     [SerializeField] private AudioClip[] concreteClips = default;
-    private float footstepTimer = 0;
+  //[SerializeField] private AudioClip[] woodClips = default;
 
-    //get footstep time based on current movements.
-    private float GetCurrentOffset => isCrouching ? baseStepSpeed * crouchStepMultiplier : IsSprinting ? baseStepSpeed * sprintStepMultiplier : baseStepSpeed;
+    private float footstepTimer = 0;
+    private float GetCurrentOffset => isCrouching ? baseStepSpeed * crouchStepMultiplier : IsSprinting ? baseStepSpeed * sprintStepMultiplier : baseStepSpeed; //get footstep time based on current movements.
+
+    //
 
     //SLIDING PARAMTETERS
     private Vector3 hitPointNormal; //angle of the floor   
@@ -127,7 +129,7 @@ public class FirstPersonController : MonoBehaviour
     {
         get //determine if player should be sliding
         {
-            
+
             //get data of the floor player is standing on via (downward) raycast, from player transform/centerpoint of object.
             if (characterController.isGrounded && Physics.Raycast(transform.position, Vector3.down, out RaycastHit slopeHit, raycastLength))
             {
@@ -138,7 +140,7 @@ public class FirstPersonController : MonoBehaviour
             }
             else
             {
-               return false;
+                return false;
             }
         }
     }
@@ -153,7 +155,7 @@ public class FirstPersonController : MonoBehaviour
     private CharacterController characterController; //reference to character controller attached to player game object so player can move
 
     private Vector3 moveDirection; //final move amount applied to character controller
-    private Vector2 currentInput; //value given to controller via keyboard input (w,a,s,d keys)
+    public Vector2 currentInput; //value given to controller via keyboard input (w,a,s,d keys) // // // // //
 
     private float rotationX = 0; //angle that is clamped with upper and lower look limit
 
@@ -181,9 +183,11 @@ public class FirstPersonController : MonoBehaviour
         currentStamina = maxStamina;
         Cursor.lockState = CursorLockMode.Locked; //locks cursor within game window.
         Cursor.visible = false; //hides cursor
+
+        //audioSource = GetComponent<AudioSource> ();
     }
 
-        // Update is called once per frame
+    // Update is called once per frame
     void Update()
     {
         if (CanMove)
@@ -205,17 +209,17 @@ public class FirstPersonController : MonoBehaviour
                 HandleZoom();
 
             if (useFootsteps)
-               HandleFootsteps();
+                HandleFootsteps();
 
             if (canInteract)
                 HandleInteractionCheck();
-                HandleInteractionInput();
+            HandleInteractionInput();
 
             if (useStamina)
                 HandleStamina();
-                        
+
             ApplyFinalMovement();
-        }        
+        }
     }
 
     private void HandleMovementInput()
@@ -325,9 +329,9 @@ public class FirstPersonController : MonoBehaviour
 
         if (Input.GetKeyUp(zoomKey)) //if mouse 1 (right mouse button) is released.
         {
-            if (zoomRoutine != null) 
+            if (zoomRoutine != null)
             {
-                StopCoroutine(zoomRoutine); 
+                StopCoroutine(zoomRoutine);
                 zoomRoutine = null;
             }
 
@@ -377,28 +381,26 @@ public class FirstPersonController : MonoBehaviour
             if (Physics.Raycast(playerCamera.transform.position, Vector3.down, out RaycastHit hit, raycastLength)) //if raycast down hits tagged object
             {
                 switch (hit.collider.tag)
-                {
-                    case "Footsteps/WOOD":
-                        footstepAudioSource.PlayOneShot(groundClips[default]); //and if it is wood play random wood sound.
-                        break;
+                {                    
                     case "Footsteps/GROUND":
-                        footstepAudioSource.PlayOneShot(groundClips[default]);
+                        footstepAudioSource.PlayOneShot(groundClips[UnityEngine.Random.Range(0, groundClips.Length - 1)]); ; //and if it is wood play x sound.
                         break;
                     case "Footsteps/WATER":
-                        footstepAudioSource.PlayOneShot(waterClips[default]);
+                        footstepAudioSource.PlayOneShot(waterClips[UnityEngine.Random.Range(0, waterClips.Length - 1)]);
                         break;
                     case "Footsteps/CONCRETE":
-                        footstepAudioSource.PlayOneShot(concreteClips[default]);
+                        footstepAudioSource.PlayOneShot(concreteClips[UnityEngine.Random.Range(0, concreteClips.Length - 1)]);
                         break;
-                    /*default:
+                    default:
                         footstepAudioSource.PlayOneShot(groundClips[UnityEngine.Random.Range(0, groundClips.Length - 1)]);
-                        break;*/
+                        break;
                 }
-            }
 
-            footstepTimer = GetCurrentOffset; //after playing sound effect reset footstep timer (GetCurrentOffset is a property set up in Footstep Parameters).
+            }
+            footstepTimer = GetCurrentOffset; //after playing sound effect reset footstep timer (GetCurrentOffset is a property set up in Footstep Parameters).  
         }
     }
+
 
     public void ApplyDamage(float dmg)
     {
@@ -423,12 +425,12 @@ public class FirstPersonController : MonoBehaviour
         {
             player.transform.position = respawnPoint.transform.position;
             StopCoroutine(regeneratingHealth);
-            currentHealth = (maxHealth / 1.2f);           
+            currentHealth = (maxHealth / 1.2f);
         }
-            
+
         player.transform.position = respawnPoint.transform.position;
-        Physics.SyncTransforms();        
-    }      
+        Physics.SyncTransforms();
+    }
 
     private void ApplyFinalMovement()
     {
@@ -439,9 +441,9 @@ public class FirstPersonController : MonoBehaviour
         if (WillSlideOnSlopes && IsSliding) //if player should slide and is sliding then move direction is new vector 3 (slides down / - hitPointNormal.y)
             moveDirection += new Vector3(hitPointNormal.x, -hitPointNormal.y, hitPointNormal.z) * slopeSpeed;
 
-        characterController.Move(moveDirection * Time.deltaTime); 
+        characterController.Move(moveDirection * Time.deltaTime);
     }
-    
+
     private IEnumerator CrouchStand() //lerps from 1 value to another over a set amount of time (from stand height to center point and back)
     {
         //check if anything is above (raycast from camera up) player within 1 unit. Prevents player clipping through objects.
@@ -451,16 +453,16 @@ public class FirstPersonController : MonoBehaviour
         duringCrouchAnimation = true; //tells character controller crouch animation is happening.
         //parameters. set up where the character controller is going from and to and for how long.
         //once the lerp begins, values changes constantly so character.controller. height can't be used.
-        float timeElapsed = 0; 
+        float timeElapsed = 0;
         float targetHeight = isCrouching ? standingHeight : crouchingHeight; // target height is standing height, else crouching height
         float currentHeight = characterController.height; //reference to current height
-        Vector3 targetCenter = isCrouching ? standingCenter : crouchingCenter; 
+        Vector3 targetCenter = isCrouching ? standingCenter : crouchingCenter;
         Vector3 currentCenter = characterController.center;
 
         while (timeElapsed < timeToCrouch)
         {
-            characterController.height = Mathf.Lerp(currentHeight, targetHeight, timeElapsed/timeToCrouch); //math.f uses floats
-            characterController.center = Vector3.Lerp(currentCenter, targetCenter, timeElapsed/timeToCrouch); //uses 3 vector points
+            characterController.height = Mathf.Lerp(currentHeight, targetHeight, timeElapsed / timeToCrouch); //math.f uses floats
+            characterController.center = Vector3.Lerp(currentCenter, targetCenter, timeElapsed / timeToCrouch); //uses 3 vector points
             timeElapsed += Time.deltaTime; //increment time elapsed by actual time the frame has taken.
             yield return null; //wait until next frame before continuing while statement 
         }
@@ -487,7 +489,7 @@ public class FirstPersonController : MonoBehaviour
         }
 
         playerCamera.fieldOfView = targetFOV; //round target value off
-        zoomRoutine = null; 
+        zoomRoutine = null;
     }
 
     private IEnumerator RegenerateHealth()
@@ -499,7 +501,7 @@ public class FirstPersonController : MonoBehaviour
         {                                 //loop over this
             currentHealth += healthValueIncrement;
 
-            if (currentHealth > maxHealth)  
+            if (currentHealth > maxHealth)
                 currentHealth = maxHealth; //dont go over max health.
 
             OnHeal?.Invoke(currentHealth); //Before starting new tick wait, call OnHeal to check current health. (callback for UI updates).
@@ -511,8 +513,8 @@ public class FirstPersonController : MonoBehaviour
 
     private IEnumerator RegenerateStamina()
     {
-        yield return new WaitForSeconds(timeBeforeStaminaRegenStarts); 
-        WaitForSeconds timeToWait = new WaitForSeconds(staminaTimeIncrement); 
+        yield return new WaitForSeconds(timeBeforeStaminaRegenStarts);
+        WaitForSeconds timeToWait = new WaitForSeconds(staminaTimeIncrement);
 
         while (currentStamina < maxStamina)
         {

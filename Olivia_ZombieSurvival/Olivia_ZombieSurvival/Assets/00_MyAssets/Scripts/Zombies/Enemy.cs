@@ -11,12 +11,11 @@ public class Enemy : MonoBehaviour
     NavMeshAgent navMeshAgent;
 
     private float distanceToAiTarget = 1000000f;
-
-    public bool shouldAiAttack = false;
+    public bool shouldAiAttack = false;   
 
     void Start()
     {
-        navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent = GetComponent<NavMeshAgent>();       
     }
 
     void Update()
@@ -30,8 +29,7 @@ public class Enemy : MonoBehaviour
         else if (distanceToAiTarget <= range)
         {
             shouldAiAttack = true;
-        }
-
+        }       
     }
 
     private void ChaseAiTarget()
@@ -66,7 +64,7 @@ public class Enemy : MonoBehaviour
     public void DamageThePlayer()
     {
         if (aiTarget == null) { return; }
-        aiTarget.GetComponent<FirstPersonController>().ApplyDamage(attackDamage);
-                
+        aiTarget.GetComponent<FirstPersonController>().ApplyDamage(attackDamage);       
     }
+   
 }

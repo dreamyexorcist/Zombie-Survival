@@ -8,5 +8,7 @@ public class GameSettings
     public int vSync;
     public int resolutionIndex;
     public float musicVolume;
+    
+
 
 }

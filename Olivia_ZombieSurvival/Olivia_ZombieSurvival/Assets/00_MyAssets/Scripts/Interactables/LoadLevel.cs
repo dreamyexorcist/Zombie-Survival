@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 public class LoadLevel : MonoBehaviour
 {
    
-    [SerializeField] private string loadLevel;
+    [SerializeField] private string loadLevel;    
 
-    void OnTriggerEnter(Collider other)
+   void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {

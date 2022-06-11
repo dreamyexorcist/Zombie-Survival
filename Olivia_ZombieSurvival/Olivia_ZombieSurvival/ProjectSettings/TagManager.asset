@@ -15,6 +15,7 @@ TagManager:
   - Quest3
   - Quest4
   - GameMusic
+  - GunAudio
   layers:
   - Default
   - TransparentFX

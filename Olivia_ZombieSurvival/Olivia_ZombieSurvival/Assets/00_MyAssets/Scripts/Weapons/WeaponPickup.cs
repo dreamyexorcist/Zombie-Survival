@@ -5,8 +5,8 @@ using UnityEngine;
 public class WeaponPickup : MonoBehaviour
 {
     [SerializeField] private FirstPersonController fpsController;
-    [SerializeField] private GameObject gunType;
-    [SerializeField] private GameObject weapons;
+    public GameObject gunType;
+    public GameObject weapons;
     [SerializeField] public bool weaponCollected;
     
     private void Start()

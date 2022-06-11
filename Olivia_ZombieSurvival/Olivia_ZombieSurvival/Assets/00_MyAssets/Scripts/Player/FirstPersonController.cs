@@ -63,7 +63,6 @@ public class FirstPersonController : MonoBehaviour
     public static Action<float> OnDamage;
     public static Action<float> OnHeal;
 
-
     [Header("Stamina Parameters")]
     [SerializeField] public float maxStamina = 100;
     [SerializeField] private float staminaUseMultiplier = 5; //to calculate how much stamina is lost while sprinting.
@@ -87,7 +86,6 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private Vector3 standingCenter = new Vector3(0, 0, 0);
 
     private bool isCrouching;
-
     private bool duringCrouchAnimation;
 
     [Header("Headbob Parameters")]
@@ -115,12 +113,12 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private AudioClip[] groundClips = default;
     [SerializeField] private AudioClip[] waterClips = default;
     [SerializeField] private AudioClip[] concreteClips = default;
-  //[SerializeField] private AudioClip[] woodClips = default;
+    //[SerializeField] private AudioClip[] woodClips = default;
 
     private float footstepTimer = 0;
     private float GetCurrentOffset => isCrouching ? baseStepSpeed * crouchStepMultiplier : IsSprinting ? baseStepSpeed * sprintStepMultiplier : baseStepSpeed; //get footstep time based on current movements.
 
-    //
+
 
     //SLIDING PARAMTETERS
     private Vector3 hitPointNormal; //angle of the floor   
@@ -129,7 +127,6 @@ public class FirstPersonController : MonoBehaviour
     {
         get //determine if player should be sliding
         {
-
             //get data of the floor player is standing on via (downward) raycast, from player transform/centerpoint of object.
             if (characterController.isGrounded && Physics.Raycast(transform.position, Vector3.down, out RaycastHit slopeHit, raycastLength))
             {
@@ -163,7 +160,7 @@ public class FirstPersonController : MonoBehaviour
 
     private void OnEnable() //reserved method (delegate)
     {
-        OnTakeDamage += ApplyDamage; //if method is enabled, subscribe to apply damage method.
+        OnTakeDamage += ApplyDamage; //if method is enabled, subscribe to apply damage method.       
     }
 
     private void OnDisable()
@@ -184,10 +181,8 @@ public class FirstPersonController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked; //locks cursor within game window.
         Cursor.visible = false; //hides cursor
 
-        //audioSource = GetComponent<AudioSource> ();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (CanMove)
@@ -220,6 +215,7 @@ public class FirstPersonController : MonoBehaviour
 
             ApplyFinalMovement();
         }
+
     }
 
     private void HandleMovementInput()
@@ -249,7 +245,7 @@ public class FirstPersonController : MonoBehaviour
         //Clamp conists of 3 values: rotation on x, minimum value it should be (-80), max value (80). player can look 80 degrees up and down.
         rotationX = Mathf.Clamp(rotationX, -upperLookLimit, lowerLookLimit);
         //apply rotation to camera
-        playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
+        playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0); //invert mouse HERE
         //rotates gameobject instead of camera. 
         transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeedX, 0);
 
@@ -381,7 +377,7 @@ public class FirstPersonController : MonoBehaviour
             if (Physics.Raycast(playerCamera.transform.position, Vector3.down, out RaycastHit hit, raycastLength)) //if raycast down hits tagged object
             {
                 switch (hit.collider.tag)
-                {                    
+                {
                     case "Footsteps/GROUND":
                         footstepAudioSource.PlayOneShot(groundClips[UnityEngine.Random.Range(0, groundClips.Length - 1)]); ; //and if it is wood play x sound.
                         break;

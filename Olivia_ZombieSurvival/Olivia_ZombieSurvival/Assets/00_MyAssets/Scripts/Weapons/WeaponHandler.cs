@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class WeaponHandler : MonoBehaviour
 {
-    //[SerializeField] Camera weaponCamera;
+  //[SerializeField] Camera weaponCamera;
     [SerializeField] int selectedWeapon = 0;
 
-   /* private void Start()
+  /*private void Start()
     {
         weaponCamera = GetComponent<Camera>();
     }*/
-
 
     void Update()
     {
@@ -33,8 +32,7 @@ public class WeaponHandler : MonoBehaviour
                 weapon.gameObject.SetActive(false);
             }
 
-            weaponIndex++;
-            
+            weaponIndex++;            
         }
     }
 

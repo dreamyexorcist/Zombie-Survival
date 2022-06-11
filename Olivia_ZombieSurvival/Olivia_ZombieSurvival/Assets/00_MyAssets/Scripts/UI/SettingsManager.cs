@@ -6,7 +6,7 @@ using System.IO;
 
 public class SettingsManager : MonoBehaviour
 {
-    public Toggle fullscreenToggle;
+    public Toggle fullscreenToggle;   
     public Dropdown resolutionDropdown;
     public Dropdown textureQualityDropdown;
     public Dropdown antialiasingDropdown;
@@ -22,7 +22,7 @@ public class SettingsManager : MonoBehaviour
     {
         gameSettings = new GameSettings();
 
-        fullscreenToggle.onValueChanged.AddListener(delegate { OnFullscreenToggle(); });
+        fullscreenToggle.onValueChanged.AddListener(delegate { OnFullscreenToggle(); });       
         resolutionDropdown.onValueChanged.AddListener(delegate { OnResultionChange(); });
         textureQualityDropdown.onValueChanged.AddListener(delegate { OnTextureQualityChange(); });
         antialiasingDropdown.onValueChanged.AddListener(delegate { OnAntialiasingChange(); });
@@ -42,7 +42,7 @@ public class SettingsManager : MonoBehaviour
     public void OnFullscreenToggle()
     {
         gameSettings.fullscreen = Screen.fullScreen = fullscreenToggle.isOn;
-    }
+    }  
     public void OnResultionChange()
     {
         Screen.SetResolution(resolutions[resolutionDropdown.value].width, resolutions[resolutionDropdown.value].height, Screen.fullScreen);
@@ -78,10 +78,10 @@ public class SettingsManager : MonoBehaviour
         gameSettings = JsonUtility.FromJson<GameSettings>(File.ReadAllText(Application.persistentDataPath + "/gamesettings.json"));
 
         musicVolumeSlider.value = gameSettings.musicVolume;
-        antialiasingDropdown.value = gameSettings.antialiasing;
         vSybcDropdown.value = gameSettings.vSync;
+        antialiasingDropdown.value = gameSettings.antialiasing;
         textureQualityDropdown.value = gameSettings.textureQuality;
-        resolutionDropdown.value = gameSettings.resolutionIndex;
+        resolutionDropdown.value = gameSettings.resolutionIndex;      
         fullscreenToggle.isOn = gameSettings.fullscreen;
 
         resolutionDropdown.RefreshShownValue();

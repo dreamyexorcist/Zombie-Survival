@@ -4,26 +4,18 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    //[SerializeField] private GameObject pickupScript;
     [SerializeField] Camera playerCamera;
     [SerializeField] float weaponRange = 10f;
     [SerializeField] float weaponDamage = 50f;
     [SerializeField] GameObject weaponHitEffect;
 
-    public bool weaponCollected;
-
-    private void Start()
-    {
-        weaponCollected = FindObjectOfType<WeaponPickup>();
-    }
-
+    public AudioSource gunshotAudio;
+  //public bool weaponCollected;   
+  //public GameObject weaponHandler;
 
     void Update()
-    {
-       // weaponCollected = FindObjectOfType<WeaponPickup>();
-
-        if (weaponCollected && Input.GetButtonDown("Fire1"))
-     // if (Input.GetButtonDown("Fire1"))
+    {       
+        if (Input.GetButtonDown("Fire1"))       
         {
             Fire();
         }
@@ -33,9 +25,9 @@ public class Weapon : MonoBehaviour
 
     public void Fire()
     {
+        gunshotAudio.Play();
 
         RaycastHit objectHit; //Store info about the object that is hit. 
-
         if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out objectHit, weaponRange))
         {
             CreateHitEffect(objectHit);
@@ -46,9 +38,10 @@ public class Weapon : MonoBehaviour
             enemyHealthScript.TakeDamage(weaponDamage);
         }
         else { return; }
+
     }
 
-    private void CreateHitEffect(RaycastHit objectHit)
+    public void CreateHitEffect(RaycastHit objectHit)
     {
         GameObject bulletHit = Instantiate(weaponHitEffect, objectHit.point, Quaternion.identity);
         Destroy(bulletHit, 2f);

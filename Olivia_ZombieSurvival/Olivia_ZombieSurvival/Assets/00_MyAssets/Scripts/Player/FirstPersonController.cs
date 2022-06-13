@@ -11,7 +11,7 @@ public class FirstPersonController : MonoBehaviour
     //is only true if canSprint is true and sprint key is pressed. (instead of 'double if check' a property is used for cleanliness of code)
     private bool IsSprinting => canSprint && Input.GetKey(sprintKey);
 
-    //is checked every frame. If key is pressed (true) and charcter is grounded, jumping is activated. 
+    //is checked every frame. If key is pressed (true) and character is grounded, jumping is activated. 
     private bool ShouldJump => Input.GetKeyDown(jumpKey) && characterController.isGrounded;
 
     //if pressed (true) and not mid crouch or mid stand, and if player is grounded, crouching is activated.
@@ -40,7 +40,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private float sprintSpeed = 6.0f;
     [SerializeField] private float crouchSpeed = 1.5f;
     [SerializeField] private float slopeSpeed = 8f;
-    [SerializeField] float raycastLength = 2f;
+    [SerializeField] public float raycastLength = 2f;
 
     [Header("Look Parameters")]
     [SerializeField, Range(1, 10)] private float lookSpeedX = 2.0f; //, adds 2nd attribute, edtitable inside inspector
@@ -113,7 +113,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private AudioClip[] groundClips = default;
     [SerializeField] private AudioClip[] waterClips = default;
     [SerializeField] private AudioClip[] concreteClips = default;
-    //[SerializeField] private AudioClip[] woodClips = default;
+    [SerializeField] private AudioClip[] woodClips = default;
 
     private float footstepTimer = 0;
     private float GetCurrentOffset => isCrouching ? baseStepSpeed * crouchStepMultiplier : IsSprinting ? baseStepSpeed * sprintStepMultiplier : baseStepSpeed; //get footstep time based on current movements.
@@ -221,17 +221,17 @@ public class FirstPersonController : MonoBehaviour
     private void HandleMovementInput()
     {
         //checking crouch before sprint prevents sprinting while crouching.
-        currentInput = new Vector2((isCrouching ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * Input.GetAxis("Vertical"), (isCrouching ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * Input.GetAxis("Horizontal")); //ternary operator ? : (shortened if else condition)
+        currentInput = new Vector2((isCrouching ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * Input.GetAxis("Vertical"), (isCrouching ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * Input.GetAxis("Horizontal")); //ternary operator (? :) is a shortened if else condition)
         //left & right movement. calculates direction on Vector 2 of player input multiplied by the walking speed
 
         float moveDirectionY = moveDirection.y;
-        //cache movement temporaily on y-axis so actual vertical going upwards away from floor, or towards floor.
+        //cache movement temporarily on y-axis so actual vertical going upwards away from floor, or towards floor.
         //If Vector3 updates, y position needs to be reset to its original value.
 
         moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) + (transform.TransformDirection(Vector3.right) * currentInput.y);
         //Calculates move direction based on characters orientation
         //forward axis multiplied by current x plus sideways axis multiplied by current input y
-        //Vector3 inside move direction which adheares to current players orientation.
+        //Vector3 inside move direction which adheres to current players orientation.
         moveDirection.y = moveDirectionY;
     }
 
@@ -242,10 +242,10 @@ public class FirstPersonController : MonoBehaviour
         rotationX -= Input.GetAxis("Mouse Y") * lookSpeedY;
 
         //clamp this rotation using upper and lower lock limits (stop 360 degree rotation)
-        //Clamp conists of 3 values: rotation on x, minimum value it should be (-80), max value (80). player can look 80 degrees up and down.
+        //Clamp consists  of 3 values: rotation on x, minimum value it should be (-80), max value (80). player can look 80 degrees up and down.
         rotationX = Mathf.Clamp(rotationX, -upperLookLimit, lowerLookLimit);
         //apply rotation to camera
-        playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0); //invert mouse HERE
+        playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0); //invert mouse HERE for setings option
         //rotates gameobject instead of camera. 
         transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeedX, 0);
 
@@ -267,7 +267,7 @@ public class FirstPersonController : MonoBehaviour
     {
         if (!characterController.isGrounded) return; //if grounnded no/end headbob
 
-        //Abs = absolute value of float, a positive vlue regardless if positive or not. If float is 1 or -1 mathf.Abs gives 1.
+        //Abs = absolute value of float, a positive value regardless if positive or not. If float is 1 or -1 mathf.Abs gives 1.
         //Done because movement directions are either positive or negative and the direction of the player faces is not required
         //Since only a value greater than 'player stands still' (>0.1) is needed.
         if (Mathf.Abs(moveDirection.x) > 0.1f || Mathf.Abs(moveDirection.z) > 0.1f)
@@ -341,7 +341,7 @@ public class FirstPersonController : MonoBehaviour
         {
             if (hit.collider.gameObject.layer == 7 && (currentInteractable == null || hit.collider.gameObject.GetInstanceID() != currentInteractable.GetInstanceID())) //if gameobject collider is layer 7 and is null (not looking at anything)
             {                                                                                                                                                          //and if not null make sure current looked at object is not same object as what is currently stored as interactable.
-                                                                                                                                                                       //makes sure current Interactable is updated with to new current interactable if 2 objects are close together.
+                                                                                                                                                                       //makes sure current Interactable is updated with the new current interactable if 2 objects are close together.
                 hit.collider.TryGetComponent(out currentInteractable); //then try to get component and pass it out to current Interactable. Specifying <type> not neccessary because type is inferred by 'currentInteractable'.
 
                 if (currentInteractable) // if raycast hit interacable (not null) then interactable is on focus. Looking at an interactable object for the first time.
@@ -357,7 +357,7 @@ public class FirstPersonController : MonoBehaviour
 
     private void HandleInteractionInput() //perfom action if intercation key is pressed.
     {
-        //if left mouse key is pressed, and interactable is there (not null, set in HandleInteractionCheck). then raycast out from camera viewport for distance set by interactionDistance towards interadction layers.
+        //if left mouse key is pressed, and interactable is there (not null, set in HandleInteractionCheck). then raycast out from camera viewport for distance set by interactionDistance towards interaction layers.
         //if all is true then interactable is detected.
         if (Input.GetKeyDown(interactKey) && currentInteractable != null && Physics.Raycast(playerCamera.ViewportPointToRay(interactionRayPoint), out RaycastHit hit, interactionDistance, interactionLayer))
         {
@@ -372,20 +372,23 @@ public class FirstPersonController : MonoBehaviour
 
         footstepTimer -= Time.deltaTime;
 
-        if (footstepTimer <= 0)
+        if(footstepTimer <= 0)
         {
-            if (Physics.Raycast(playerCamera.transform.position, Vector3.down, out RaycastHit hit, raycastLength)) //if raycast down hits tagged object
+            if(Physics.Raycast(playerCamera.transform.position, Vector3.down, out RaycastHit hit, raycastLength)) //if raycast down hits tagged object
             {
                 switch (hit.collider.tag)
                 {
                     case "Footsteps/GROUND":
-                        footstepAudioSource.PlayOneShot(groundClips[UnityEngine.Random.Range(0, groundClips.Length - 1)]); ; //and if it is wood play x sound.
+                        footstepAudioSource.PlayOneShot(groundClips[UnityEngine.Random.Range(0, groundClips.Length - 1)]);  //and if it is wood play x sound.
                         break;
                     case "Footsteps/WATER":
                         footstepAudioSource.PlayOneShot(waterClips[UnityEngine.Random.Range(0, waterClips.Length - 1)]);
                         break;
                     case "Footsteps/CONCRETE":
                         footstepAudioSource.PlayOneShot(concreteClips[UnityEngine.Random.Range(0, concreteClips.Length - 1)]);
+                        break;                       
+                    case "Footsteps/WOOD":
+                        footstepAudioSource.PlayOneShot(woodClips[UnityEngine.Random.Range(0, woodClips.Length - 1)]);
                         break;
                     default:
                         footstepAudioSource.PlayOneShot(groundClips[UnityEngine.Random.Range(0, groundClips.Length - 1)]);
@@ -417,7 +420,7 @@ public class FirstPersonController : MonoBehaviour
     {
         currentHealth = 0; //health will not get lower then 0
 
-        if (regeneratingHealth != null)
+        currentHealth = 0;
         {
             player.transform.position = respawnPoint.transform.position;
             StopCoroutine(regeneratingHealth);
@@ -448,7 +451,7 @@ public class FirstPersonController : MonoBehaviour
 
         duringCrouchAnimation = true; //tells character controller crouch animation is happening.
         //parameters. set up where the character controller is going from and to and for how long.
-        //once the lerp begins, values changes constantly so character.controller. height can't be used.
+        //once the lerp begins, character.controller.height values change constantly so it cannot be used.
         float timeElapsed = 0;
         float targetHeight = isCrouching ? standingHeight : crouchingHeight; // target height is standing height, else crouching height
         float currentHeight = characterController.height; //reference to current height
@@ -471,7 +474,7 @@ public class FirstPersonController : MonoBehaviour
         duringCrouchAnimation = false; //tells character controller crouch animation has ended.
     }
 
-    private IEnumerator ToggleZoom(bool isEnter) //1 parameter detemines in and out zoom state
+    private IEnumerator ToggleZoom(bool isEnter) //1 parameter determines in and out zoom state
     {
         float targetFOV = isEnter ? zoomFOV : defaultFOV; //if isEnter then zoom value, else default.
         float startingFOV = playerCamera.fieldOfView; //reference to starting FOV so coroutine can pickup at any point.

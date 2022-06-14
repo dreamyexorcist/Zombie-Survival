@@ -7,16 +7,16 @@ public class RepeatEventSound : MonoBehaviour
     [SerializeField] private FirstPersonController fpsController;
     public AudioSource[] clips;    
 
-    private void Start()
+   /* private void Start()
     {
-        fpsController = GameObject.Find("FirstPersonController").GetComponent<FirstPersonController>();
-    }    
+       // fpsController = GameObject.Find("FirstPersonController").GetComponent<FirstPersonController>();
+    }    */
 
     void OnTriggerStay(Collider other)
     {
-        fpsController.GetComponent<FirstPersonController>();
+        //fpsController.GetComponent<FirstPersonController>();
 
-        if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.E) && fpsController != null)
+        if (Input.GetKeyDown(KeyCode.E))
         {
             clips[0].Play();
             clips[1].Play();
